@@ -38,15 +38,48 @@ plt.gca().yaxis.set_minor_formatter(matplotlib.ticker.ScalarFormatter())
 plt.title('Cell concentration versus time, semi-log')
 plt.show()
 
+# Slicing data to only take the growth phase part
+index_growth_phase_start = 0
+index_growth_phase_finish = 5
+cell_concentration_growth_phase = cell_concentration[index_growth_phase_start:index_growth_phase_finish]
+lactose_concentration_growth_phase = lactose_concentration[index_growth_phase_start:index_growth_phase_finish - 1]
+
 # Calculate growth rate mu = 1/Xmin*(dX/dt) using Euler's formula for the derivative
-mu = np.zeros(len(cell_concentration) - 1)
+mu = np.zeros(len(lactose_concentration_growth_phase))
 
 for x in range(len(mu)):
     mu[x] = 1/cell_concentration[x]*(cell_concentration[x + 1] - cell_concentration[x])/(sampling_time[x + 1] - sampling_time[x])
 
+# Linear regression of 1/mu versus 1/lactose concentration
+x = (1/lactose_concentration_growth_phase).reshape((-1, 1))
+y = 1/mu
+model = LinearRegression().fit(x, y)
+y_intercept = model.intercept_
+slope = model.coef_[0]
+x_intercept = -y_intercept/slope
+det_coefficient = model.score(x, y)
 
+# Find kinetics parameter from the linear regression
+Ks = -1/x_intercept
+mu_max = 1/y_intercept
+
+# Create 2 points for plotting the model
+x_graph = np.array([x_intercept, 1/lactose_concentration_growth_phase[-1]*1.2])
+y_graph = model.predict(x_graph.reshape((-1, 1)))
 
 # Lineweaver-Burke type plot
-plt.plot(1/lactose_concentration, 1/mu, color = 'black', marker = 'o', markersize = '4', linestyle = 'None', label = 'Cell concentration')
+plt.plot(1/lactose_concentration_growth_phase, 1/mu, color = 'black', marker = 'o', markersize = '4', linestyle = 'None', label = 'Cell concentration$\mathregular{^{-1}}$')
+plt.plot(x_graph, y_graph, color = 'black', marker = 'None', linestyle = '--', linewidth = 1.0, label = 'Cell concentration$\mathregular{^{-1}}$, predicted')
+plt.vlines(0, 0, np.max(y_graph)*1.05, color = 'black', linestyle = '-', linewidth = 1.0)
+plt.ylim([0, np.max(y_graph)*1.05])
+plt.grid(which = 'both', linewidth = 0.25)
+plt.legend(loc = 'upper left')
 plt.title('Lineweaver-Burke type plot')
 plt.show()
+
+# Find doubling-time, using eq. X = exp(mu*t)*X0 and X = 2*X0 ==> t = ln(2)/u
+mu_average = np.average(mu)
+doubling_time = np.log(2)/mu_average
+
+# Print kinetics parameters
+print(f'Ks = {Ks}\n\u03bcmax = {mu_max}\ndoubling time = {doubling_time} h')
