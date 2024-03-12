@@ -1,5 +1,4 @@
 import numpy as np
-import math
 import matplotlib.pyplot as plt
 import matplotlib.ticker
 from sklearn.linear_model import LinearRegression
@@ -13,17 +12,17 @@ lactose_concentration = np.array([137.0, 114.0, 90.0, 43.0, 29.0, 9.0, 2.0]) # g
 fig, ax1 = plt.subplots()
 ax1.stairs(lactose_concentration, sampling_time, baseline = None, color = 'red', linestyle = '--', linewidth = 1.0, label = 'Lactose concentration')
 #ax1.plot(sampling_time[:-1] + np.diff(sampling_time)/2, lactose_concentration, color = 'r', marker = 'o', linestyle = 'None')
-ax1.set_ylabel('Lactose concentration, $\mathregular{g.L^{-1}}$')
+ax1.set_ylabel('Lactose concentration, g.L⁻¹')
 ax1.set_yticks(np.linspace(0, 160, 9))
-ax1.legend(loc = 'upper left')
 ax1.grid(linewidth = 0.25)
+ax1.legend(loc = 'upper left')
 
 ax2 = ax1.twinx()
 ax2.plot(sampling_time, cell_concentration, color = 'blue', marker = 'o', markersize = '4', linestyle = '--', linewidth = 1.0, label = 'Cell concentration')
 ax2.set_xlabel('Time, h')
-ax2.set_ylabel('Cell concentration, $\mathregular{g.L^{-1}}$')
-ax2.grid(linewidth = 0.25)
+ax2.set_ylabel('Cell concentration, g.L⁻¹')
 ax2.set_yticks(np.linspace(0, 80, 9))
+ax2.grid(linewidth = 0.25)
 ax2.legend(loc = 'upper right')
 
 plt.title('Cell and lactose concentration versus time')
@@ -54,7 +53,7 @@ for x in range(len(mu)):
 x = (1/lactose_concentration_growth_phase).reshape((-1, 1))
 y = 1/mu
 model = LinearRegression().fit(x, y)
-y_intercept = model.intercept_
+y_intercept = float(model.intercept_)
 slope = model.coef_[0]
 x_intercept = -y_intercept/slope
 det_coefficient = model.score(x, y)
@@ -68,9 +67,12 @@ x_graph = np.array([x_intercept, 1/lactose_concentration_growth_phase[-1]*1.2])
 y_graph = model.predict(x_graph.reshape((-1, 1)))
 
 # Lineweaver-Burke type plot
-plt.plot(1/lactose_concentration_growth_phase, 1/mu, color = 'black', marker = 'o', markersize = '4', linestyle = 'None', label = 'Cell concentration$\mathregular{^{-1}}$')
-plt.plot(x_graph, y_graph, color = 'black', marker = 'None', linestyle = '--', linewidth = 1.0, label = 'Cell concentration$\mathregular{^{-1}}$, predicted')
+plt.plot(1/lactose_concentration_growth_phase, 1/mu, color = 'black', marker = 'o', markersize = '4', linestyle = 'None', label = 'Cell concentration⁻¹')
+plt.plot(x_graph, y_graph, color='black', marker='None', linestyle='--', linewidth=1.0, label=f'Cell concentration⁻¹, predicted (R² = {round(det_coefficient, 2)})')
+plt.xlabel('1/X')
+plt.ylabel('1/μ')
 plt.vlines(0, 0, np.max(y_graph)*1.05, color = 'black', linestyle = '-', linewidth = 1.0)
+plt.xlim([-0.07, 0.04])
 plt.ylim([0, np.max(y_graph)*1.05])
 plt.grid(which = 'both', linewidth = 0.25)
 plt.legend(loc = 'upper left')
@@ -82,4 +84,4 @@ mu_average = np.average(mu)
 doubling_time = np.log(2)/mu_average
 
 # Print kinetics parameters
-print(f'Ks = {Ks}\n\u03bcmax = {mu_max}\ndoubling time = {doubling_time} h')
+print(f'Ks = {round(Ks, 2)}\nμₘₐₓ = {round(mu_max, 2)}\ndoubling time = {round(doubling_time, 2)} h')
