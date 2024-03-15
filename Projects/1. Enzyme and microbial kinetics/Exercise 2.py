@@ -49,7 +49,7 @@ ax2.set_yticks(np.linspace(5.4, 7.1, 11))
 ax2.set_ylim(5.4, 7.1)
 ax2.legend(loc = 'upper right')
 
-plt.title('Cell concentration versus time, semi-log')
+plt.title('Cell concentration and growth rate versus time')
 plt.show()
 
 # Slicing data to only take the growth phase part
