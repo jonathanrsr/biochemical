@@ -2,17 +2,18 @@
 
 Welcome to the repository for ChE-320, where you'll find projects related to bioreactor modeling and simulation. This repository is designed to store all the assignments, projects, and related materials for the course.
 
-## About the Course
+## About the Course 📜
 
 ChE-320 focuses on the principles of bioreactor design, modeling, and simulation.
 
-## Members
+## Members 🏆
 Younes, Anna, Pauline, Jonathan
 
-## Projects
+## Projects 🚧
 
 ### [Project 1: Enzyme and microbial kinetics](https://github.com/jonathanrsr/biochemical/tree/main/Projects/1.%20Enzyme%20and%20microbial%20kinetics)
-   - **Description**: Introduction to data interpretation and enzyme kinetics.
+   - **Description**: Introduction to data interpretation and enzyme kinetics. 🏎️
+   - **Deadline**: Thursday 22.03.2024, 23 h 59. 🚨
 
    *More projects will be added as we progress through the course.*
 
