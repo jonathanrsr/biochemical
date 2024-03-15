@@ -68,6 +68,8 @@ slope = model.coef_[0]
 x_intercept = -y_intercept/slope
 det_coefficient = model.score(x, y)
 
+print(f'Slope: {round(slope, 2)}\nIntercept (x): {round(x_intercept, 2)}\nIntercept (y): {round(y_intercept, 2)}')
+
 # Find kinetics parameter from the linear regression
 Ks = -1/x_intercept
 mu_max = 1/y_intercept
@@ -91,8 +93,9 @@ plt.title('Lineweaver-Burke type plot')
 plt.show()
 
 # Find doubling-time, using eq. X = exp(mu*t)*X0 and X = 2*X0 ==> t = ln(2)/u
-mu_average = np.average(mu)
+mu_average = np.average(mu[:3]) # Only the first 3 growth rates are used, before its decrease
 doubling_time = np.log(2)/mu_average
+max_doubling_time = np.log(2)/mu_max
 
 # Print kinetics parameters
-print(f'Ks = {round(Ks, 2)}\nμmax = {round(mu_max, 2)}\ndoubling time = {round(doubling_time, 2)} h')
+print(f'Ks = {round(Ks, 2)}\nμmax = {round(mu_max, 2)}\nμaverage = {round(mu_average, 2)}\ndoubling time = {round(doubling_time, 2)} h\nMax doubling time = {round(max_doubling_time, 2)}')
