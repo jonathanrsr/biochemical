@@ -7,7 +7,7 @@ Welcome to the repository for ChE-320, where you'll find projects related to bio
 ChE-320 focuses on the principles of bioreactor design, modeling, and simulation.
 
 ## Members
-   - **Members**: Younes, Anna, Pauline, Jonathan
+Younes, Anna, Pauline, Jonathan
 
 ## Projects
 
