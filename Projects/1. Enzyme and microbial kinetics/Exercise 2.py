@@ -69,6 +69,9 @@ y_graph = model.predict(x_graph.reshape((-1, 1)))
 # Lineweaver-Burke type plot
 plt.plot(1/lactose_concentration_growth_phase, 1/mu, color = 'black', marker = 'o', markersize = '4', linestyle = 'None', label = 'Cell concentration⁻¹')
 plt.plot(x_graph, y_graph, color='black', marker='None', linestyle='--', linewidth=1.0, label=f'Cell concentration⁻¹, predicted (R² = {round(det_coefficient, 2)})')
+plt.annotate(r'$\frac{1}{\mu_{\mathrm{max}}}$', xy = (0, y_intercept), xycoords = 'data', xytext = (-200, 100), textcoords = 'offset pixels', arrowprops = dict(arrowstyle = '-|>'))
+plt.annotate(r'-$\frac{1}{K_{\mathrm{s}}}$', xy = (x_intercept, 0), xycoords = 'data', xytext = (-22, 200), textcoords = 'offset pixels', arrowprops = dict(arrowstyle = '-|>'))
+
 plt.xlabel('1/S')
 plt.ylabel('1/μ')
 plt.vlines(0, 0, np.max(y_graph)*1.05, color = 'black', linestyle = '-', linewidth = 1.0)
@@ -83,4 +86,4 @@ mu_average = np.average(mu)
 doubling_time = np.log(2)/mu_average
 
 # Print kinetics parameters
-print(f'Ks = {round(Ks, 2)}\nμₘₐₓ = {round(mu_max, 2)}\ndoubling time = {round(doubling_time, 2)} h')
+print(f'Ks = {round(Ks, 2)}\nμmax = {round(mu_max, 2)}\ndoubling time = {round(doubling_time, 2)} h')
