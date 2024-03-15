@@ -11,7 +11,7 @@ Younes, Anna, Pauline, Jonathan
 
 ## Projects
 
-### Project 1: Enzyme and microbial kinetics
+### [Project 1: Enzyme and microbial kinetics](https://github.com/jonathanrsr/biochemical/tree/main/Projects/1.%20Enzyme%20and%20microbial%20kinetics)
    - **Description**: Introduction to data interpretation and enzyme kinetics.
 
    *More projects will be added as we progress through the course.*
