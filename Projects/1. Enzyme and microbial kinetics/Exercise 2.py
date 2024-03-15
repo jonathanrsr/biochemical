@@ -1,6 +1,5 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import matplotlib.ticker
 from sklearn.linear_model import LinearRegression
 
 # Empirical data
@@ -11,8 +10,7 @@ lactose_concentration = np.array([137.0, 114.0, 90.0, 43.0, 29.0, 9.0, 2.0]) # g
 # Plot cell and lactose concentration as a function of time
 fig, ax1 = plt.subplots()
 ax1.stairs(lactose_concentration, sampling_time, baseline = None, color = 'red', linestyle = '--', linewidth = 1.0, label = 'Lactose concentration')
-#ax1.plot(sampling_time[:-1] + np.diff(sampling_time)/2, lactose_concentration, color = 'r', marker = 'o', linestyle = 'None')
-ax1.set_ylabel('Lactose concentration, g.L⁻¹')
+ax1.set_ylabel(r'$\text{Lactose concentration, g.L}^{-1}$')
 ax1.set_yticks(np.linspace(0, 160, 9))
 ax1.grid(linewidth = 0.25)
 ax1.legend(loc = 'upper left')
@@ -20,7 +18,7 @@ ax1.legend(loc = 'upper left')
 ax2 = ax1.twinx()
 ax2.plot(sampling_time, cell_concentration, color = 'blue', marker = 'o', markersize = '4', linestyle = '--', linewidth = 1.0, label = 'Cell concentration')
 ax2.set_xlabel('Time, h')
-ax2.set_ylabel('Cell concentration, g.L⁻¹')
+ax2.set_ylabel(r'$\text{Cell concentration, g.L}^{-1}$')
 ax2.set_yticks(np.linspace(0, 80, 9))
 ax2.grid(linewidth = 0.25)
 ax2.legend(loc = 'upper right')
@@ -28,12 +26,29 @@ ax2.legend(loc = 'upper right')
 plt.title('Cell and lactose concentration versus time')
 plt.show()
 
+# Calculate growth rate mu = 1/Xmin*(dX/dt) using Euler's formula for the derivative
+mu = np.zeros(len(lactose_concentration))
+
+for x in range(len(mu)):
+    mu[x] = 1/cell_concentration[x]*(cell_concentration[x + 1] - cell_concentration[x])/(sampling_time[x + 1] - sampling_time[x])
+
 # Plot semi-log graph of cell concentrationas a function of time
-plt.semilogy(sampling_time, cell_concentration, color = 'black', marker = 'o', markersize = '4', linestyle = '--', linewidth = 1.0)
-plt.xlabel('Time, h')
-plt.ylabel('Cell concentration, ln')
-plt.grid(which = 'both', linewidth = 0.25)
-plt.gca().yaxis.set_minor_formatter(matplotlib.ticker.ScalarFormatter())
+fig, ax1 = plt.subplots()
+
+ax1.stairs(mu, sampling_time, baseline = None, color = 'red', linestyle = '--', linewidth = 1.0, label = r'Growth rate')
+ax1.set_ylabel(r'$\text{Growth rate, g.L}^{-1}\text{.s}^{-1}$')
+ax1.set_yticks(np.linspace(0, 1, 11))
+ax1.grid(linewidth = 0.25)
+ax1.legend(loc = 'upper left')
+
+ax2 = ax1.twinx()
+ax2.plot(sampling_time, np.log(cell_concentration) + np.log(cell_concentration[0]), color = 'blue', marker = 'o', markersize = '4', linestyle = '--', linewidth = 1.0, label = 'Cell concentration')
+ax2.set_xlabel('Time, h')
+ax2.set_ylabel('Cell concentration, ln')
+ax2.set_yticks(np.linspace(5.4, 7.1, 11))
+ax2.set_ylim(5.4, 7.1)
+ax2.legend(loc = 'upper right')
+
 plt.title('Cell concentration versus time, semi-log')
 plt.show()
 
@@ -42,12 +57,7 @@ index_growth_phase_start = 0
 index_growth_phase_finish = 5
 cell_concentration_growth_phase = cell_concentration[index_growth_phase_start:index_growth_phase_finish]
 lactose_concentration_growth_phase = lactose_concentration[index_growth_phase_start:index_growth_phase_finish - 1]
-
-# Calculate growth rate mu = 1/Xmin*(dX/dt) using Euler's formula for the derivative
-mu = np.zeros(len(lactose_concentration_growth_phase))
-
-for x in range(len(mu)):
-    mu[x] = 1/cell_concentration[x]*(cell_concentration[x + 1] - cell_concentration[x])/(sampling_time[x + 1] - sampling_time[x])
+mu = mu[index_growth_phase_start:index_growth_phase_finish - 1]
 
 # Linear regression of 1/mu versus 1/lactose concentration
 x = (1/lactose_concentration_growth_phase).reshape((-1, 1))
@@ -67,11 +77,10 @@ x_graph = np.array([x_intercept, 1/lactose_concentration_growth_phase[-1]*1.2])
 y_graph = model.predict(x_graph.reshape((-1, 1)))
 
 # Lineweaver-Burke type plot
-plt.plot(1/lactose_concentration_growth_phase, 1/mu, color = 'black', marker = 'o', markersize = '4', linestyle = 'None', label = 'Cell concentration⁻¹')
-plt.plot(x_graph, y_graph, color='black', marker='None', linestyle='--', linewidth=1.0, label=f'Cell concentration⁻¹, predicted (R² = {round(det_coefficient, 2)})')
-plt.annotate(r'$\frac{1}{\mu_{\mathrm{max}}}$', xy = (0, y_intercept), xycoords = 'data', xytext = (-200, 100), textcoords = 'offset pixels', arrowprops = dict(arrowstyle = '-|>'))
-plt.annotate(r'-$\frac{1}{K_{\mathrm{s}}}$', xy = (x_intercept, 0), xycoords = 'data', xytext = (-22, 200), textcoords = 'offset pixels', arrowprops = dict(arrowstyle = '-|>'))
-
+plt.plot(1/lactose_concentration_growth_phase, 1/mu, color = 'black', marker = 'o', markersize = '4', linestyle = 'None', label = 'experimental data')
+plt.plot(x_graph, y_graph, color='black', marker='None', linestyle='--', linewidth=1.0, label = r'$\text{model, R}{^2} = ' + r'\text{' + str(round(det_coefficient, 2)) + r'}$')
+plt.annotate(r'$\frac{1}{\mu_{\mathrm{max}}}$', xy = (0, y_intercept), xycoords = 'data', xytext = (-200, 100), textcoords = 'offset pixels', arrowprops = dict(arrowstyle = '-|>', color = 'black'))
+plt.annotate(r'-$\frac{1}{K_{\mathrm{s}}}$', xy = (x_intercept, 0), xycoords = 'data', xytext = (-22, 200), textcoords = 'offset pixels', arrowprops = dict(arrowstyle = '-|>', color = 'black'))
 plt.xlabel('1/S')
 plt.ylabel('1/μ')
 plt.vlines(0, 0, np.max(y_graph)*1.05, color = 'black', linestyle = '-', linewidth = 1.0)
