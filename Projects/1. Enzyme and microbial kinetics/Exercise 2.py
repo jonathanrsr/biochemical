@@ -54,7 +54,7 @@ plt.show()
 
 # Slicing data to only take the growth phase part
 index_growth_phase_start = 0
-index_growth_phase_finish = 5
+index_growth_phase_finish = 6
 cell_concentration_growth_phase = cell_concentration[index_growth_phase_start:index_growth_phase_finish]
 lactose_concentration_growth_phase = lactose_concentration[index_growth_phase_start:index_growth_phase_finish - 1]
 mu = mu[index_growth_phase_start:index_growth_phase_finish - 1]
@@ -79,8 +79,8 @@ y_graph = model.predict(x_graph.reshape((-1, 1)))
 # Lineweaver-Burke type plot
 plt.plot(1/lactose_concentration_growth_phase, 1/mu, color = 'black', marker = 'o', markersize = '4', linestyle = 'None', label = 'experimental data')
 plt.plot(x_graph, y_graph, color='black', marker='None', linestyle='--', linewidth=1.0, label = r'$\text{model, R}{^2} = ' + r'\text{' + str(round(det_coefficient, 2)) + r'}$')
-plt.annotate(r'$\frac{1}{\mu_{\mathrm{max}}}$', xy = (0, y_intercept), xycoords = 'data', xytext = (-200, 100), textcoords = 'offset pixels', arrowprops = dict(arrowstyle = '-|>', color = 'black'))
-plt.annotate(r'-$\frac{1}{K_{\mathrm{s}}}$', xy = (x_intercept, 0), xycoords = 'data', xytext = (-22, 200), textcoords = 'offset pixels', arrowprops = dict(arrowstyle = '-|>', color = 'black'))
+plt.annotate(r'$\frac{1}{\mu_{\mathrm{max}}}$', xy = (0, y_intercept), xycoords = 'data', xytext = (-50, 25), textcoords = 'offset pixels', arrowprops = dict(arrowstyle = '-|>', color = 'black'))
+plt.annotate(r'-$\frac{1}{K_{\mathrm{s}}}$', xy = (x_intercept, 0), xycoords = 'data', xytext = (-9, 50), textcoords = 'offset pixels', arrowprops = dict(arrowstyle = '-|>', color = 'black'))
 plt.xlabel('1/S')
 plt.ylabel('1/μ')
 plt.vlines(0, 0, np.max(y_graph)*1.05, color = 'black', linestyle = '-', linewidth = 1.0)
