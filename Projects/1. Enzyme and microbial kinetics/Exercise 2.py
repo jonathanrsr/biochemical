@@ -10,6 +10,7 @@ lactose_concentration = np.array([137.0, 114.0, 90.0, 43.0, 29.0, 9.0, 2.0]) # g
 # Plot cell and lactose concentration as a function of time
 fig, ax1 = plt.subplots()
 ax1.stairs(lactose_concentration, sampling_time, baseline = None, color = 'red', linestyle = '--', linewidth = 1.0, label = 'Lactose concentration')
+ax1.set_xlabel('Time, h')
 ax1.set_ylabel(r'$\text{Lactose concentration, g.L}^{-1}$')
 ax1.set_yticks(np.linspace(0, 160, 9))
 ax1.grid(linewidth = 0.25)
@@ -17,7 +18,6 @@ ax1.legend(loc = 'upper left')
 
 ax2 = ax1.twinx()
 ax2.plot(sampling_time, cell_concentration, color = 'blue', marker = 'o', markersize = '4', linestyle = '--', linewidth = 1.0, label = 'Cell concentration')
-ax2.set_xlabel('Time, h')
 ax2.set_ylabel(r'$\text{Cell concentration, g.L}^{-1}$')
 ax2.set_yticks(np.linspace(0, 80, 9))
 ax2.grid(linewidth = 0.25)
