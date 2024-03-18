@@ -21,9 +21,10 @@ popt_1, pcov_1 = curve_fit(model, x, y)  #Call of the function that will fit the
 vmax, km = popt_1 #Parameters we are trying to optimize 
 print(popt_1)
 
+plt.rcParams['font.family'] = 'serif'
 plt.plot(s, model(s, popt_1[0], popt_1[1]), label="Optimized model", c='dodgerblue')
 plt.scatter(x,y,label='Experimental data',c='black',s=20)
-plt.axhline(y=vmax, linestyle=':', label = '$v_{max}$ = 0.158')
+plt.axhline(y=vmax, linestyle=':', label = '$v_{max}$ = 0.158 mmol/L/hr')
 plt.plot([-0.05, km ], [vmax/2,vmax/2], linestyle='--', c='darkmagenta')
 plt.plot([km, km ], [0,vmax/2], linestyle='--', c='darkmagenta')
 plt.scatter(km,vmax/2, c='darkmagenta', s=20)
@@ -35,9 +36,6 @@ plt.annotate('$K_M$= 0.022', xy=(km,0), xytext=(0.1, 0.01),
 
 plt.xlim([-0.02,1])
 plt.ylim([0,0.17])
-
-
-
 plt.xlabel('P [mmol/L]')
 plt.ylabel('$r_s$')
 plt.grid()
