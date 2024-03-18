@@ -11,14 +11,14 @@ from scipy.linalg import solve
 from scipy.optimize import curve_fit
 
 def model(s, vmax, km):
-    return vmax*(s/(km+s))
+    return vmax*(s/(km+s)) #Michaelis-Menten model 
 
-x= np.array([0.68, 0.16, 0.006])
-y= np.array([0.16,0.13,0.0385])
+x= np.array([0.68, 0.16, 0.006]) #Sucrose concentration  
+y= np.array([0.16,0.13,0.0385]) #Rates derived from the product concentration
 s = np.linspace(0,1,1000)
 
-popt_1, pcov_1 = curve_fit(model, x, y)
-vmax, km = popt_1
+popt_1, pcov_1 = curve_fit(model, x, y)  #Call of the function that will fit the model to the experimental data given
+vmax, km = popt_1 #Parameters we are trying to optimize 
 print(popt_1)
 
 plt.plot(s, model(s, popt_1[0], popt_1[1]), label="Optimized model", c='dodgerblue')
