@@ -38,18 +38,18 @@ E, S, ES, P = results.T
 
 # We plot the species evolution over time.
 plt.plot(t, results, linewidth = 1.0)
-plt.xlabel("Time [s]")
+plt.xlabel("Time (s)")
 plt.ylabel(r"$\text{Species' concentration (mol.L}^{-1}\text{)}$")
 plt.legend("E,S,ES,P".split(","))
 
-plt.grid()
+plt.grid(linewidth = 0.25)
 plt.title("Species' evolution over time")
 
-plt.xlim(left=0, right=5) 
-plt.ylim(bottom=0, top=1.1) 
+plt.xlim(left = 0, right = 5) 
+plt.ylim(bottom = 0, top = 1.1) 
 
-plt.xticks(np.arange(0, 5.1, 1)) 
-plt.yticks(np.arange(0, 1.2, 0.2))
+plt.xticks(np.arange(0, 5.1, 0.5)) 
+plt.yticks(np.arange(0, 1.2, 0.1))
 
 plt.show()
 
@@ -92,10 +92,10 @@ plt.legend()
 plt.xlim(left=0, right=5) 
 plt.ylim(bottom=0, top=1.1) 
 
-plt.xticks(np.arange(0, 5.1, 1)) 
-plt.yticks(np.arange(0, 1.2, 0.2))
+plt.xticks(np.arange(0, 5.1, 0.5)) 
+plt.yticks(np.arange(0, 1.2, 0.1))
 
-plt.grid()
+plt.grid(linewidth = 0.25)
 plt.show()
 
 
@@ -122,74 +122,65 @@ v_0_E0_vary = kcat*E0_range*S0/(((kb + kcat)/kf) + S0)
 
 #Plots 
 fig, axs = plt.subplots(2, 2, figsize=(12,13))
-axs[0,0].set_title('(a) v(t=0) vs kf')
-axs[0,0].semilogx(kf_range,v_0_kf_vary,'b', linewidth=2)
-axs[0,0].set_xlabel('kf [l/mol/s]', size=10)
-axs[0,0].set_ylabel('Initial reaction rate, v(t=0), [mol/l/s]',  size=10)
-axs[0,0].legend(["kf variation"], loc='lower right', frameon=False)
-axs[0,0].grid(True, which="both")
+axs[0,0].set_title(r'$\text{(a) }\text{Initial reaction rate vs k}_{f}$')
+axs[0,0].semilogx(kf_range, v_0_kf_vary, color = 'black', linewidth = 1.0)
+axs[0,0].set_xlabel(r'$\text{k}_{f}\text{ (L.mol}^{-1}\text{.s}^{-1}\text{)}$')
+axs[0,0].set_ylabel(r'$\nu_{init}\text{, (mol.L}^{-1}\text{.s}^{-1}\text{)}$')
+axs[0,0].grid(True, which="both", linewidth = 0.25)
 
-axs[0,1].set_title('(b) v(t=0) vs kb')
-axs[0,1].semilogx(kb_range,v_0_kb_vary,'r', linewidth=2)
-axs[0,1].set_xlabel('kb [1/s]', size=10)
-axs[0,1].set_ylabel('Initial reaction rate, v(t=0), [mol/l/s]',  size=10)
-axs[0,1].legend(["kb variation"], loc='lower left', frameon=False)
-axs[0,1].grid(True, which="both")
+axs[0,1].set_title(r'$\text{(b) }\text{Initial reaction rate vs k}_{b}$')
+axs[0,1].semilogx(kb_range, v_0_kb_vary, color = 'black', linewidth = 1.0)
+axs[0,1].set_xlabel(r'$\text{k}_{b}\text{ (s}^{-1}\text{)}$')
+axs[0,1].set_ylabel(r'$\nu_{init}\text{, (mol.L}^{-1}\text{.s}^{-1}\text{)}$')
+axs[0,1].grid(True, which="both", linewidth = 0.25)
 
-axs[1,0].set_title('(c) v(t=0) vs kcat')
-axs[1,0].semilogx(kcat_range,v_0_kcat_vary,'g', linewidth=2)
-axs[1,0].set_xlabel('kcat [1/s]', size=10)
-axs[1,0].set_ylabel('Initial reaction rate, v(t=0), [mol/l/s]',  size=10)
-axs[1,0].legend(["kcat variation"], loc='upper left', frameon=False)
-axs[1,0].grid(True, which="both")
+axs[1,0].set_title(r'$\text{(c) }\text{Initial reaction rate vs k}_{cat}$')
+axs[1,0].semilogx(kcat_range, v_0_kcat_vary, color = 'black', linewidth = 1.0)
+axs[1,0].set_xlabel(r'$\text{k}_{cat}\text{ (s}^{-1}\text{)}$')
+axs[1,0].set_ylabel(r'$\nu_{init}\text{, (mol.L}^{-1}\text{.s}^{-1}\text{)}$')
+axs[1,0].grid(True, which="both", linewidth = 0.25)
 
-axs[1,1].set_title('(d) v(t=0) vs E0')
-axs[1,1].plot(E0_range,v_0_E0_vary,'y', linewidth=2)
-axs[1,1].set_xlabel('E0 [mol/l]', size=10)
-axs[1,1].set_ylabel('Initial reaction rate, v(t=0), [mol/l/s]',  size=10)
-axs[1,1].legend(["E0 variation"], loc='upper left', frameon=False)
-axs[1,1].grid(True, which="both")
+axs[1,1].set_title('(c) Initial reaction rate vs initial enzyme concentration')
+axs[1,1].plot(E0_range, v_0_E0_vary, color = 'black', linewidth = 1.0)
+axs[1,1].set_xlabel(r'$\text{E}_{0}\text{ (mol.L}^{-1}\text{)}$')
+axs[1,1].set_ylabel(r'$\nu_{init}\text{, (mol.L}^{-1}\text{.s}^{-1}\text{)}$')
+axs[1,1].grid(True, which="both", linewidth = 0.25)
 
 plt.savefig('Initial_velocity.eps', format='eps')
+plt.show()
 
 
 #Exercise 1, Q) f
-v0_kf_slope=v_0_kf_vary[np.log(kf_range)<=4]
-kf_range_slope=kf_range[np.log(kf_range)<=4]
-v0_kb_slope=v_0_kb_vary[np.log(kb_range)>=7.5]
-kb_range_slope=kb_range[np.log(kb_range)>=7.5]
-v0_kcat_slope=v_0_kcat_vary[np.log(kcat_range)>=7]
-kcat_range_slope=kcat_range[np.log(kcat_range)>=7]
-v0_E0_slope=v_0_E0_vary[E0_range>0]
-E0_range_slope=E0_range[E0_range>0]
+v0_kf_slope = v_0_kf_vary[np.log(kf_range) <= 4]
+kf_range_slope = kf_range[np.log(kf_range) <= 4]
+v0_kb_slope = v_0_kb_vary[np.log(kb_range) >= 7.5]
+kb_range_slope = kb_range[np.log(kb_range) >= 7.5]
+v0_kcat_slope = v_0_kcat_vary[np.log(kcat_range) >= 7]
+kcat_range_slope = kcat_range[np.log(kcat_range) >= 7]
+v0_E0_slope = v_0_E0_vary[E0_range > 0]
+E0_range_slope = E0_range[E0_range > 0]
 
-######### Fits #######
+######### Fits #########
 z_kf = np.polyfit(np.log(kf_range_slope), np.log(v0_kf_slope), 1)
 x1_kf=np.linspace(2,4,100)
 y1_kf = np.polyval(z_kf,x1_kf);
 
-######### Fits ############
-
+######### Fits #########
 z_kb = np.polyfit(np.log(kb_range_slope), np.log(v0_kb_slope), 1)
 x1_kb=np.linspace(7.5,9.5,100)
 y1_kb = np.polyval(z_kb,x1_kb);
 
-########## Fits #########
-
+######### Fits #########
 z_kcat = np.polyfit(np.log(kcat_range_slope), np.log(v0_kcat_slope), 1)
 x1_kcat=np.linspace(7,9.2,100)
 y1_kcat = np.polyval(z_kcat,x1_kcat);
 
-
-########## Fits ###########
-
+######### Fits #########
 z_E0 = np.polyfit(np.log(E0_range_slope), np.log(v0_E0_slope), 1)
 x1_E0=np.linspace(-4,0,100)
 y1_E0 = np.polyval(z_E0,x1_E0);
 
-
-
-############################
+######### Plot #########
 fig, axs = plt.subplots(2, 2, figsize=(12,13))
 axs[0,0].set_title('(a) log(v(t=0)) vs log(kf)')
 axs[0,0].scatter(np.log(kf_range_slope), np.log(v0_kf_slope), color = '#02666e', label = "data")
