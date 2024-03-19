@@ -85,7 +85,7 @@ y_graph = model.predict(x_graph.reshape((-1, 1)))
 
 
 # Lineweaver-Burke type plot
-plt.plot(1/lactose_concentration_growth_phase, 1/mu, color = 'black', marker = 'o', markersize = '4', linestyle = 'None', label = 'experimental data')
+plt.plot(1/lactose_concentration_growth_phase, 1/mu, color = 'black', marker = 'o', markersize = '4', linestyle = 'None', label = 'data')
 plt.plot(x_graph, y_graph, color='black', marker='None', linestyle='--', linewidth=1.0, label = r'$\text{model, R}{^2} = ' + r'\text{' + str(round(det_coefficient, 2)) + r'}$')
 plt.annotate(r'$\frac{1}{\mu_{\mathrm{max}}}$', xy = (0, y_intercept), xycoords = 'data', xytext = (-50, 25), textcoords = 'offset points', arrowprops = dict(arrowstyle = '-|>', color = 'black'))
 plt.annotate(r'-$\frac{1}{K_{\mathrm{s}}}$', xy = (x_intercept, 0), xycoords = 'data', xytext = (-6, 50), textcoords = 'offset points', arrowprops = dict(arrowstyle = '-|>', color = 'black'))
