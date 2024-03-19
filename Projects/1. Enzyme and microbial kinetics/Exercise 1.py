@@ -223,8 +223,8 @@ t = np.linspace(start = 0, stop= 5, num = 5001) #s
 S0 = 1 #mol/l
 E0 = 0.1 #mol/l
 P0 = 0 #mol/l
-ES0 =P0 #mol/l
-P0_1 =P0 #mol/l
+ES0 = P0 #mol/l
+P0_1 = P0 #mol/l
 kf = 10000 #l/mol/s
 kb = 20 #1/s
 kcat1 = 10 #1/s
@@ -259,13 +259,12 @@ results = odeint(equation, initial_conditions, t)
 CE, CS, CES, CP, CP_1 = results.T/V
 
 #Plot of the system
-plt.figure(1, figsize=(8,7))
-plt.title("Non Specific Enzymatic Reaction",  size=20)
-plt.plot(t, CE, t, CS, t, CES, t, CP, t, CP_1)
-plt.xlabel("time [s]", size=15)
-plt.ylabel("Ci [mol/l]", size=15)
-plt.legend(["E", "S", "ES", "P", "P'"])
-plt.grid()
+plt.plot(t, CE, t, CS, t, CES, t, CP, t, CP_1, linewidth = 1.0)
+plt.title('Non Specific Enzymatic Reaction')
+plt.xlabel('time (s)')
+plt.ylabel(r'$\text{C}_{i}\text{ mol.L}^{-1}$')
+plt.legend(['E', 'S', 'ES', 'P', 'P'])
+plt.grid(linewidth = 0.25)
 plt.savefig('non_enzymatic_reaction.eps', format='eps')
 plt.show()
 
@@ -287,15 +286,14 @@ results = odeint(equation, initial_conditions, t)
 CE, CS, CES, CP, CP_1 = results.T/V
 
 #Plot figure of example change in selectivity
-plt.figure(1, figsize=(8,7))
-plt.title("Non Specific Enzymatic Reaction",  size=20)
-plt.plot(t, CE, t, CS, t, CES, t, CP, t, CP_1)
-plt.xlabel("time [s]", size=15)
-plt.ylabel("Ci [mol/l]", size=15)
+plt.plot(t, CE, t, CS, t, CES, t, CP, t, CP_1, linewidth = 1.0)
+plt.title("Non Specific Enzymatic Reaction")
+plt.xlabel("time (s)")
+plt.ylabel(r'$\text{C}_{i}\text{ mol.L}^{-1}$')
 plt.xlim([0, 0.1])
 plt.legend(["E", "S", "ES", "P", "P'"])
 
-plt.grid()
+plt.grid(linewidth = 0.25)
 plt.savefig('non1_enzymatic_reaction.eps', format='eps')
 plt.show()
 
