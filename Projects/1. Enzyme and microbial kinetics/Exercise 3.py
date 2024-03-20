@@ -53,7 +53,7 @@ plt.show()
 
 #--------------- LINEWEAVER BURK PLOT -----------------------------
 
-# Linear regression of 1/mu versus 1/lactose concentration
+# Linear regression of 1/nu versus 1/S
 x = (1/S_average).reshape((-1, 1))
 y = 1/rs
 model = LinearRegression().fit(x, y)
@@ -87,4 +87,4 @@ plt.title('Lineweaver-Burke type plot')
 plt.savefig('Projects\\1. Enzyme and microbial kinetics\\Images\\lineweaver_burke_type_plot_3.eps', format = 'eps')
 plt.show()
 
-print(f'Km = {round(Km, 2)}\nμmax = {round(nu_max, 2)}')
+print(f'Km = {round(Km, 2)}\nmax = {round(nu_max, 2)}')
