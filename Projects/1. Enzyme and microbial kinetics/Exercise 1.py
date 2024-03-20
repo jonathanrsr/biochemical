@@ -164,51 +164,55 @@ E0_range_slope = E0_range[E0_range > 0]
 z_kf = np.polyfit(np.log(kf_range_slope), np.log(v0_kf_slope), 1)
 x1_kf=np.linspace(2, 4, 100)
 y1_kf = np.polyval(z_kf,x1_kf);
+R_kf = np.corrcoef(np.log(kf_range_slope), np.log(v0_kf_slope))[0, 1]
 
 ######### Fits #########
 z_kb = np.polyfit(np.log(kb_range_slope), np.log(v0_kb_slope), 1)
 x1_kb=np.linspace(7.5, 9.5, 100)
 y1_kb = np.polyval(z_kb,x1_kb);
+R_kb = np.corrcoef(np.log(kb_range_slope), np.log(v0_kb_slope))[0, 1]
 
 ######### Fits #########
 z_kcat = np.polyfit(np.log(kcat_range_slope), np.log(v0_kcat_slope), 1)
 x1_kcat=np.linspace(7, 9.2, 100)
 y1_kcat = np.polyval(z_kcat,x1_kcat);
+R_kcat = np.corrcoef(np.log(kcat_range_slope), np.log(v0_kcat_slope))[0, 1]
 
 ######### Fits #########
 z_E0 = np.polyfit(np.log(E0_range_slope), np.log(v0_E0_slope), 1)
 x1_E0=np.linspace(-4, 0, 100)
 y1_E0 = np.polyval(z_E0,x1_E0);
+R_E0 = np.corrcoef(np.log(E0_range_slope), np.log(v0_E0_slope))[0, 1]
 
 ######### Plot #########
 fig, axs = plt.subplots(2, 2, figsize=(12, 13))
 axs[0,0].set_title(r'$\text{Initial reaction rate (ln) vs k}_{f}\text{ (ln)}$')
-axs[0,0].scatter(np.log(kf_range_slope), np.log(v0_kf_slope), color = 'black', s = 4.0, label = "data")
-axs[0,0].plot(x1_kf, y1_kf, color = 'black', linestyle = '--', linewidth = 1.0, label = 'model')
+axs[0,0].scatter(np.log(kf_range_slope), np.log(v0_kf_slope), color = 'black', s = 10.0, label = "data")
+axs[0,0].plot(x1_kf, y1_kf, color = 'black', linestyle = '--', linewidth = 1.0, label = r'$\text{model, R}^{2} = ' + r'\text{' + f'{round(R_kf**2, 3):.3f}' + r'}$')
 axs[0,0].set_xlabel(r'$\text{ln(k}_{f}\text{)}$')
 axs[0,0].set_ylabel(r'$\text{ln(}\nu_{init}\text{)}$')
 axs[0,0].legend()
 axs[0,0].grid(True, which="both", linewidth = 0.25)
 
 axs[0,1].set_title(r'$\text{Initial reaction rate (ln) vs k}_{b}\text{ (ln)}$')
-axs[0,1].scatter(np.log(kb_range_slope), np.log(v0_kb_slope), color = 'black', s = 4.0, label = "data")
-axs[0,1].plot(x1_kb, y1_kb, color = 'black', linestyle = '--', linewidth = 1.0, label='model')
+axs[0,1].scatter(np.log(kb_range_slope), np.log(v0_kb_slope), color = 'black', s = 10.0, label = "data")
+axs[0,1].plot(x1_kb, y1_kb, color = 'black', linestyle = '--', linewidth = 1.0, label = r'$\text{model, R}^{2} = ' + r'\text{' + f'{round(R_kb**2, 3):.3f}' + r'}$')
 axs[0,1].set_xlabel(r'$\text{ln(k}_{b}\text{)}$')
 axs[0,1].set_ylabel(r'$\text{ln(}\nu_{init}\text{)}$')
 axs[0,1].legend()
 axs[0,1].grid(True, which="both", linewidth = 0.25)
 
 axs[1,0].set_title(r'$\text{Initial reaction rate (ln) vs k}_{cat}\text{ (ln)}$')
-axs[1,0].scatter(np.log(kcat_range_slope), np.log(v0_kcat_slope), color = 'black', s = 4.0, label = "data")
-axs[1,0].plot(x1_kcat, y1_kcat, color = 'black', linestyle = '--', linewidth = 1.0, label = 'model')
+axs[1,0].scatter(np.log(kcat_range_slope), np.log(v0_kcat_slope), color = 'black', s = 10.0, label = "data")
+axs[1,0].plot(x1_kcat, y1_kcat, color = 'black', linestyle = '--', linewidth = 1.0, label = r'$\text{model, R}^{2} = ' + r'\text{' + f'{round(R_kcat**2, 3):.3f}' + r'}$')
 axs[1,0].set_xlabel(r'$\text{ln(k}_{cat}\text{)}$')
 axs[1,0].set_ylabel(r'$\text{ln(}\nu_{init}\text{)}$')
 axs[1,0].legend()
 axs[1,0].grid(True, which="both", linewidth = 0.25)
 
 axs[1,1].set_title(r'$\text{Initial reaction rate (ln) vs initial enzyme concentration (ln)}$')
-axs[1,1].scatter(np.log(E0_range_slope), np.log(v0_E0_slope), color = 'black', s = 4.0, label="data")
-axs[1,1].plot(x1_E0, y1_E0, color = 'black', linestyle = '--', linewidth = 1.0, label = 'model')
+axs[1,1].scatter(np.log(E0_range_slope), np.log(v0_E0_slope), color = 'black', s = 10.0, label = "data")
+axs[1,1].plot(x1_E0, y1_E0, color = 'black', linestyle = '--', linewidth = 1.0, label = r'$\text{model, R}^{2} = ' + r'\text{' + f'{round(R_E0**2, 3):.3f}' + r'}$')
 axs[1,1].set_xlabel(r'$\text{ln(E}_{0}\text{)}$')
 axs[1,1].set_ylabel(r'$\text{ln(}\nu_{init}\text{)}$')
 axs[1,1].legend()
