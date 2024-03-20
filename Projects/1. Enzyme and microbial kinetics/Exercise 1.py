@@ -51,6 +51,7 @@ plt.ylim(bottom = 0, top = 1.1)
 plt.xticks(np.arange(0, 5.1, 0.5)) 
 plt.yticks(np.arange(0, 1.2, 0.1))
 
+plt.savefig('Projects\\1. Enzyme and microbial kinetics\\Images\\fig1.eps', format='eps')
 plt.show()
 
 # We define the system of differential equations, representing the rate of change of reactants and products in the
@@ -96,6 +97,7 @@ plt.xticks(np.arange(0, 5.1, 0.5))
 plt.yticks(np.arange(0, 1.2, 0.1))
 
 plt.grid(linewidth = 0.25)
+plt.savefig('Projects\\1. Enzyme and microbial kinetics\\Images\\fig2.eps', format='eps')
 plt.show()
 
 
@@ -125,28 +127,28 @@ fig, axs = plt.subplots(2, 2, figsize=(12,13))
 axs[0,0].set_title(r'$\text{(a) }\text{Initial reaction rate vs k}_{f}$')
 axs[0,0].semilogx(kf_range, v_0_kf_vary, color = 'black', linewidth = 1.0)
 axs[0,0].set_xlabel(r'$\text{k}_{f}\text{ (L.mol}^{-1}\text{.s}^{-1}\text{)}$')
-axs[0,0].set_ylabel(r'$\nu_{init}\text{, (mol.L}^{-1}\text{.s}^{-1}\text{)}$')
+axs[0,0].set_ylabel(r'$\nu_{init}\text{ (mol.L}^{-1}\text{.s}^{-1}\text{)}$')
 axs[0,0].grid(True, which="both", linewidth = 0.25)
 
 axs[0,1].set_title(r'$\text{(b) }\text{Initial reaction rate vs k}_{b}$')
 axs[0,1].semilogx(kb_range, v_0_kb_vary, color = 'black', linewidth = 1.0)
 axs[0,1].set_xlabel(r'$\text{k}_{b}\text{ (s}^{-1}\text{)}$')
-axs[0,1].set_ylabel(r'$\nu_{init}\text{, (mol.L}^{-1}\text{.s}^{-1}\text{)}$')
+axs[0,1].set_ylabel(r'$\nu_{init}\text{ (mol.L}^{-1}\text{.s}^{-1}\text{)}$')
 axs[0,1].grid(True, which="both", linewidth = 0.25)
 
 axs[1,0].set_title(r'$\text{(c) }\text{Initial reaction rate vs k}_{cat}$')
 axs[1,0].semilogx(kcat_range, v_0_kcat_vary, color = 'black', linewidth = 1.0)
 axs[1,0].set_xlabel(r'$\text{k}_{cat}\text{ (s}^{-1}\text{)}$')
-axs[1,0].set_ylabel(r'$\nu_{init}\text{, (mol.L}^{-1}\text{.s}^{-1}\text{)}$')
+axs[1,0].set_ylabel(r'$\nu_{init}\text{ (mol.L}^{-1}\text{.s}^{-1}\text{)}$')
 axs[1,0].grid(True, which="both", linewidth = 0.25)
 
 axs[1,1].set_title('(c) Initial reaction rate vs initial enzyme concentration')
 axs[1,1].plot(E0_range, v_0_E0_vary, color = 'black', linewidth = 1.0)
 axs[1,1].set_xlabel(r'$\text{E}_{0}\text{ (mol.L}^{-1}\text{)}$')
-axs[1,1].set_ylabel(r'$\nu_{init}\text{, (mol.L}^{-1}\text{.s}^{-1}\text{)}$')
+axs[1,1].set_ylabel(r'$\nu_{init}\text{ (mol.L}^{-1}\text{.s}^{-1}\text{)}$')
 axs[1,1].grid(True, which="both", linewidth = 0.25)
 
-plt.savefig('Initial_velocity.eps', format='eps')
+plt.savefig('Projects\\1. Enzyme and microbial kinetics\\Images\\Initial_velocity.eps', format='eps')
 plt.show()
 
 
@@ -218,7 +220,7 @@ axs[1,1].set_ylabel(r'$\text{ln(}\nu_{init}\text{)}$')
 axs[1,1].legend()
 axs[1,1].grid(True, which="both", linewidth = 0.25)
 
-plt.savefig('logloginitialvelocity.eps', format='eps')
+plt.savefig('Projects\\1. Enzyme and microbial kinetics\\Images\\logloginitialvelocity.eps', format='eps')
 plt.show()
 
 #Exercise 1, Q) h
@@ -266,10 +268,10 @@ CE, CS, CES, CP, CP_1 = results.T/V
 plt.plot(t, CE, t, CS, t, CES, t, CP, t, CP_1, linewidth = 1.0)
 plt.title('Non Specific Enzymatic Reaction')
 plt.xlabel('time (s)')
-plt.ylabel(r'$\text{C}_{i}\text{ mol.L}^{-1}$')
+plt.ylabel(r'$\text{C}_{i}\text{ (mol.L}^{-1}\text{)}$')
 plt.legend(['E', 'S', 'ES', 'P', 'P'])
 plt.grid(linewidth = 0.25)
-plt.savefig('non_enzymatic_reaction.eps', format='eps')
+plt.savefig('Projects\\1. Enzyme and microbial kinetics\\Images\\non_enzymatic_reaction.eps', format='eps')
 plt.show()
 
 print(CP_1[-1]) #Undesired product concentration at steady state
@@ -293,12 +295,12 @@ CE, CS, CES, CP, CP_1 = results.T/V
 plt.plot(t, CE, t, CS, t, CES, t, CP, t, CP_1, linewidth = 1.0)
 plt.title("Non Specific Enzymatic Reaction")
 plt.xlabel("time (s)")
-plt.ylabel(r'$\text{C}_{i}\text{ mol.L}^{-1}$')
+plt.ylabel(r'$\text{C}_{i}\text{ (mol.L}^{-1}\text{)}$')
 plt.xlim([0, 0.1])
 plt.legend(["E", "S", "ES", "P", "P'"])
 
 plt.grid(linewidth = 0.25)
-plt.savefig('non1_enzymatic_reaction.eps', format='eps')
+plt.savefig('Projects\\1. Enzyme and microbial kinetics\\Images\\non1_enzymatic_reaction.eps', format='eps')
 plt.show()
 
 print(CP_1[-1]) #Undesired product concentration at steady state
