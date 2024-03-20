@@ -123,7 +123,7 @@ v_0_kcat_vary = kcat_range*E0*S0/(((kb + kcat_range)/kf) +S0)
 v_0_E0_vary = kcat*E0_range*S0/(((kb + kcat)/kf) + S0)
 
 #Plots 
-fig, axs = plt.subplots(2, 2, figsize=(12,13))
+fig, axs = plt.subplots(2, 2, figsize=(12, 13))
 axs[0,0].set_title(r'$\text{(a) }\text{Initial reaction rate vs k}_{f}$')
 axs[0,0].semilogx(kf_range, v_0_kf_vary, color = 'black', linewidth = 1.0)
 axs[0,0].set_xlabel(r'$\text{k}_{f}\text{ (L.mol}^{-1}\text{.s}^{-1}\text{)}$')
