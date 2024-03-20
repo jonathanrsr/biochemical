@@ -41,3 +41,38 @@ plt.ylabel('$r_s$')
 plt.grid()
 plt.legend()
 #plt.savefig('bonus_graphfinal.jpg')
+
+#--------------- LINEWEAVER BURK PLOT -----------------------------
+
+Substr= np.array([0.68, 0.16, 0.006])
+
+rs= np.array([0.16,0.13,0.0385])
+
+s = np.linspace(0,1,1000)
+
+plt.scatter(1/Substr, 1/rs)
+plt.ylim([0,30])
+
+def model_lin_LB(x,a,b):
+    return a*x+b
+
+popt_2, pcov_2 = curve_fit(model_lin_LB, (1/Substr), (1/rs))
+A, B = popt_2
+print(popt_2)
+
+overS = np.linspace(-80,200, 500)
+overRS= np.linspace(-5, 30, 500)
+
+fig, ax=plt.subplots(figsize=(9,7))
+ax.axhline(y=0, c='black')
+ax.axvline(x=0, c='black')
+ax.plot(overS, model_lin_LB(overS, A, B), linestyle = '--')
+ax.scatter(1/Substr, 1/rs)
+ax.set_ylabel('$1/r_S$')
+ax.set_xlabel('$1/S$')
+ax.scatter(-B/A, 0, label=f'-1/$K_M$ = {-B/A:.2f}')
+ax.scatter(0, B, label='$1/μ_{max}$= 6.51', c='r')
+ax.legend()
+ax.grid()
+#fig.savefig('LBP_Bonus.jpg')
+
