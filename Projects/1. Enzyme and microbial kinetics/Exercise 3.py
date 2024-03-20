@@ -9,6 +9,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.linalg import solve
 from scipy.optimize import curve_fit
+from sklearn.linear_model import LinearRegression
 
 def model(s, vmax, km):
     return vmax*(s/(km+s)) # Michaelis-Menten model 
@@ -43,9 +44,47 @@ plt.annotate(r'$\frac{\nu_{max}}{2}$', xy = (0, vmax/2), xytext = (km/5, vmax/2*
 plt.xlabel(r'$\text{[S] (mmol.L}^{-1}\text{)}$')
 plt.ylabel(r'$\text{r}_{s}$')
 plt.xlim(0, s[-1])
+plt.ylim(0, vmax*1.1)
 plt.grid(linewidth = 0.25)
 plt.legend()
 plt.title("Michaelis-Menten plot")
 plt.savefig('Projects\\1. Enzyme and microbial kinetics\\Images\\michaelis_menten_plot.eps', format = 'eps')
 plt.show()
-#plt.savefig('bonus_graphfinal.jpg')
+
+#--------------- LINEWEAVER BURK PLOT -----------------------------
+
+# Linear regression of 1/mu versus 1/lactose concentration
+x = (1/S_average).reshape((-1, 1))
+y = 1/rs
+model = LinearRegression().fit(x, y)
+y_intercept = float(model.intercept_)
+slope = model.coef_[0]
+x_intercept = -y_intercept/slope
+det_coefficient = model.score(x, y)
+
+print(f'Slope: {round(slope, 2)}\nIntercept (x): {round(x_intercept, 2)}\nIntercept (y): {round(y_intercept, 2)}')
+
+# Find kinetics parameter from the linear regression
+Km = -1/x_intercept
+nu_max = 1/y_intercept
+
+# Create 2 points for plotting the model
+x_graph = np.array([x_intercept, 1/S_average[-1]*1.2]) # Multiply by 1.2 to make the line go further than the last data point
+y_graph = model.predict(x_graph.reshape((-1, 1)))
+
+# Lineweaver-Burke type plot
+plt.plot(1/S_average, 1/rs, color = 'black', marker = 'o', markersize = '4', linestyle = 'None', label = 'data')
+plt.plot(x_graph, y_graph, color = 'black', marker = 'None', linestyle = '--', linewidth=1.0, label = r'$\text{model, R}^{2} = ' + r'\text{' + f'{round(det_coefficient, 3):.3f}' + r'}$')
+plt.annotate(r'$\frac{1}{\nu_{\mathrm{max}}}$', xy = (0, y_intercept), xycoords = 'data', xytext = (50, 0), textcoords = 'offset points', arrowprops = dict(arrowstyle = '-|>', color = 'black'))
+plt.annotate(r'-$\frac{1}{K_{\mathrm{m}}}$', xy = (x_intercept, 0), xycoords = 'data', xytext = (-6, 50), textcoords = 'offset points', arrowprops = dict(arrowstyle = '-|>', color = 'black'))
+plt.xlabel('1/S')
+plt.ylabel(r'$\text{1/}\nu$')
+plt.vlines(0, 0, np.max(y_graph)*1.05, color = 'black', linestyle = '-', linewidth = 1.0) # Multiply by 1.05 for better design
+plt.ylim([0, np.max(y_graph)*1.05]) # Multiply by 1.05 for better design
+plt.grid(which = 'both', linewidth = 0.25)
+plt.legend(loc = 'lower right')
+plt.title('Lineweaver-Burke type plot')
+plt.savefig('Projects\\1. Enzyme and microbial kinetics\\Images\\lineweaver_burke_type_plot_3.eps', format = 'eps')
+plt.show()
+
+print(f'Km = {round(Km, 2)}\nμmax = {round(nu_max, 2)}')
