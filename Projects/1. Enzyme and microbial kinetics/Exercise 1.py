@@ -3,6 +3,9 @@ from scipy.integrate import odeint
 from matplotlib import pyplot as plt
 from sklearn.linear_model import LinearRegression
 
+plt.rcParams['figure.figsize'] = [8, 3]
+plt.rcParams['figure.constrained_layout.use'] = True
+
 # We set the initial concentrations and rate constants for the reaction system.
 S0 = 1 #M
 E0 = 0.1 #M
@@ -123,7 +126,7 @@ v_0_kcat_vary = kcat_range*E0*S0/(((kb + kcat_range)/kf) +S0)
 v_0_E0_vary = kcat*E0_range*S0/(((kb + kcat)/kf) + S0)
 
 #Plots 
-fig, axs = plt.subplots(2, 2, figsize=(12, 13))
+fig, axs = plt.subplots(2, 2, figsize=(8, 6))
 axs[0,0].set_title(r'$\text{(a) }\text{Initial reaction rate vs k}_{f}$')
 axs[0,0].semilogx(kf_range, v_0_kf_vary, color = 'black', linewidth = 1.0)
 axs[0,0].set_xlabel(r'$\text{k}_{f}\text{ (L.mol}^{-1}\text{.s}^{-1}\text{)}$')
@@ -187,7 +190,7 @@ y1_E0 = np.polyval(z_E0,x1_E0);
 R_E0 = np.corrcoef(np.log(E0_range_slope), np.log(v0_E0_slope))[0, 1]
 
 ######### Plot #########
-fig, axs = plt.subplots(2, 2, figsize=(12, 13))
+fig, axs = plt.subplots(2, 2, figsize=(8, 6))
 axs[0,0].set_title(r'$\text{Initial reaction rate (ln) vs k}_{f}\text{ (ln)}$')
 axs[0,0].scatter(np.log(kf_range_slope), np.log(v0_kf_slope), color = 'black', s = 10.0, label = "data")
 axs[0,0].plot(x1_kf, y1_kf, color = 'black', linestyle = '--', linewidth = 1.0, label = r'$\text{model, R}^{2} = ' + r'\text{' + f'{round(R_kf**2, 3):.3f}' + r'}$')
@@ -269,7 +272,7 @@ plt.plot(t, CE, t, CS, t, CES, t, CP, t, CP_1, linewidth = 1.0)
 plt.title('Non Specific Enzymatic Reaction')
 plt.xlabel('time (s)')
 plt.ylabel(r'$\text{C}_{i}\text{ (mol.L}^{-1}\text{)}$')
-plt.legend(['E', 'S', 'ES', 'P', 'P'])
+plt.legend(['E', 'S', 'ES', 'P', 'P'], ncol = 5)
 plt.grid(linewidth = 0.25)
 plt.savefig('Projects\\1. Enzyme and microbial kinetics\\Images\\non_enzymatic_reaction.eps', format='eps')
 plt.show()

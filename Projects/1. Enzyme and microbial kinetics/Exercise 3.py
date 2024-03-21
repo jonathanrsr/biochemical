@@ -11,6 +11,9 @@ from scipy.linalg import solve
 from scipy.optimize import curve_fit
 from sklearn.linear_model import LinearRegression
 
+plt.rcParams['figure.figsize'] = [8, 3]
+plt.rcParams['figure.constrained_layout.use'] = True
+
 def model(s, vmax, km):
     return vmax*(s/(km+s)) # Michaelis-Menten model 
 

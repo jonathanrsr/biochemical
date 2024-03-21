@@ -2,6 +2,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 
+plt.rcParams['figure.figsize'] = [8, 3]
+plt.rcParams['figure.constrained_layout.use'] = True
+
 # Empirical data
 sampling_time = np.array([0, 0.54, 0.9, 1.23, 1.58, 1.95, 2.33, 2.7]) # h
 cell_concentration = np.array([15.5, 23.0, 30.0, 38.8, 48.5, 58.3, 61.3, 62.5]) # g/L
