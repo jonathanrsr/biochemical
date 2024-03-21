@@ -39,10 +39,16 @@ This document outlines the standard graphical parameters to use for creating plo
 ## Graph Size and Layout 📋
 
 - **Figure Size**:
-  - Use `plt.rcParams['figure.figsize'] = [8, 3]` (width x height) at the beginning of your code.
+  - Use `plt.rcParams['figure.figsize'] = [8, 3]` at the beginning of your code.
   - For figure with multiple plots, use `fig, axs = plt.subplots(2, 2, figsize=(8, nbl*3))` where nbl is the number of subplots lines of the figure.
+ 
+- **Figure Layout**:
+  - Use `plt.rcParams['figure.constrained_layout.use'] = True` at the beginning of your code.
 
 ## Font and Text Parameters 📝
+
+- **Font Size**:
+  - Use `not defined`.
 
 - **Font Size**:
   - Use `plt.rcParams.update({'font.size': 10})` at the beginning of your code.
