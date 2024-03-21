@@ -5,7 +5,7 @@ This document outlines the standard graphical parameters to use for creating plo
 ## Line Plot Parameters 📈
 
 - **Line Width**: 
-  - Use a line width of `1.0`.
+  - Use a line width `linewidth = '1.0'`.
 
 - **Line Style**:
   - Use solid lines `linestyle = '-'` for data line representing a model.
