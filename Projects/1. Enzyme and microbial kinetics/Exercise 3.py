@@ -49,7 +49,7 @@ y_graph = model2.predict(x_graph.reshape((-1, 1)))
 plt.plot(1/S_average, 1/rs, color = 'black', marker = 'o', markersize = '4', linestyle = 'None', label = 'data')
 plt.plot(x_graph, y_graph, color = 'black', marker = 'None', linestyle = '--', linewidth=1.0, label = r'$\text{model, R}^{2} = ' + r'\text{' + f'{round(det_coefficient, 3):.3f}' + r'}$')
 plt.annotate(r'$\frac{1}{\nu_{\mathrm{max}}}$', xy = (0, y_intercept), xycoords = 'data', xytext = (50, 0), textcoords = 'offset points', arrowprops = dict(arrowstyle = '-|>', color = 'black'))
-plt.annotate(r'-$\frac{1}{K_{\mathrm{m}}}$', xy = (x_intercept, 0), xycoords = 'data', xytext = (-6, 50), textcoords = 'offset points', arrowprops = dict(arrowstyle = '-|>', color = 'black'))
+plt.annotate(r'-$\frac{1}{K_{\mathrm{M}}}$', xy = (x_intercept, 0), xycoords = 'data', xytext = (-6, 50), textcoords = 'offset points', arrowprops = dict(arrowstyle = '-|>', color = 'black'))
 plt.xlabel(r'$\text{1/S (L.mmol}^{-1}\text{)}$')
 plt.ylabel(r'$\text{1/r}_{s}\text{ (L.s.mmol}^{-1}\text{)}$')
 plt.vlines(0, 0, np.max(y_graph)*1.05, color = 'black', linestyle = '-', linewidth = 1.0) # Multiply by 1.05 for better design
@@ -71,7 +71,7 @@ plt.plot(S_model, rs_model, label = "model", color = 'black', linestyle = '--', 
 plt.axhline(y = nu_max, color = 'black', linestyle = ':', linewidth = 1.0)
 plt.plot([0, Km], [nu_max/2, nu_max/2], linestyle = ':', linewidth = 1.0, color = 'black')
 plt.plot([Km, Km], [0, nu_max/2], linestyle = ':', linewidth = 1.0, color = 'black')
-plt.annotate(r'$\text{K}_{m}$', xy = (Km, 0), xytext = (Km*1.2, 0.02),
+plt.annotate(r'$\text{K}_{M}$', xy = (Km, 0), xytext = (Km*1.2, 0.02),
              arrowprops = dict(arrowstyle = '-|>', color = 'black'))
 plt.annotate(r'$\nu_{max}$', xy = (0, nu_max), xytext = (S_model[-1]/5, nu_max*0.95))
 plt.annotate(r'$\frac{\nu_{max}}{2}$', xy = (0, nu_max/2), xytext = (Km/5, nu_max/2*1.05))
