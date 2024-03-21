@@ -8,8 +8,8 @@ This document outlines the standard graphical parameters to use for creating plo
   - Use a line width of `1.0`.
 
 - **Line Style**:
-  - Use solid lines (`-`) for data line representing a model.
-  - Use dashed lines (`--`) for data line representing samples.
+  - Use solid lines (`linestyle = '-'`) for data line representing a model.
+  - Use dashed lines (`linestyle = '--'`) for data line representing samples.
 
 ## Scatter Plot Parameters 🔍
 
