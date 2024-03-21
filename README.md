@@ -18,3 +18,6 @@ Younes, Anna, Pauline, Jonathan
 
    *More projects will be added as we progress through the course.*
 
+## Graphical Chart 📊
+
+You can find the graphical chart for our project [here](link_to_your_chart).
