@@ -8,7 +8,7 @@ This document outlines the standard graphical parameters to use for creating plo
 4. [Color Scheme](#color-scheme-)
 5. [Graph Size and Layout](#graph-size-and-layout-)
 6. [Font and Text Parameters](#font-and-text-parameters-)
-7. [Units](#units-)
+7. [Plot annotations](#plot-annotations)
 
 ## Line Plot Parameters 📈
 
@@ -55,11 +55,11 @@ This document outlines the standard graphical parameters to use for creating plo
 
 ## Font and Text Parameters 📝
 
-- **Font Size**:
+- **Font**:
   - Use `not defined`.
 
 - **Font Size**:
   - Use `plt.rcParams.update({'font.size': 10})` at the beginning of your code.
  
-## Units 📏
+## Plot annotations 🏷️
 
