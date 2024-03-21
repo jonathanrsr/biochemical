@@ -63,7 +63,7 @@ This document outlines the standard graphical parameters to use for creating plo
 - **Font Size**:
   - Use `plt.rcParams.update({'font.size': 10})` at the beginning of your code.
  
-## Plot annotations 🏷️
+## Plot annotations 📈
 
 - **Title**:
 
