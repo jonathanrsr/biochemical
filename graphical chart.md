@@ -8,7 +8,7 @@ This document outlines the standard graphical parameters to use for creating plo
 4. [Color Scheme](#color-scheme-)
 5. [Graph Size and Layout](#graph-size-and-layout-)
 6. [Font and Text Parameters](#font-and-text-parameters-)
-7. [Plot annotations](#plot-annotations-)
+7. [Plot annotations](#plot-annotations-%EF%B8%8F)
 
 ## Line Plot Parameters 📈
 
