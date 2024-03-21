@@ -2,7 +2,6 @@
 
 This document outlines the standard graphical parameters to use for creating plots in Python for our ChE-320 projects.
 
-## Table of Contents
 1. [Line Plot Parameters](#line-plot-parameters-)
 2. [Scatter Plot Parameters](#scatter-plot-parameters-)
 3. [Grids Parameters](#grids-parameters-)
