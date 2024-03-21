@@ -52,6 +52,8 @@ This document outlines the standard graphical parameters to use for creating plo
  
 - **Figure Layout**:
   - Use `plt.rcParams['figure.constrained_layout.use'] = True` at the beginning of your code.
+ 
+- **Axes Limits and Ticks**:
 
 ## Font and Text Parameters 📝
 
@@ -63,3 +65,10 @@ This document outlines the standard graphical parameters to use for creating plo
  
 ## Plot annotations 🏷️
 
+- **Title**:
+
+- **Axes**:
+
+- **Legend**:
+
+- **Annotation**:
