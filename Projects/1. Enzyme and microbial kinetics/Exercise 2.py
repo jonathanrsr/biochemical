@@ -8,17 +8,18 @@ cell_concentration = np.array([15.5, 23.0, 30.0, 38.8, 48.5, 58.3, 61.3, 62.5]) 
 lactose_concentration = np.array([137.0, 114.0, 90.0, 43.0, 29.0, 9.0, 2.0]) # g/L
 
 # Plot cell and lactose concentration as a function of time
-fig, ax1 = plt.subplots(figsize = (5.52, 2.5))
-ax1.stairs(lactose_concentration, sampling_time, baseline = None, color = 'red', linestyle = '--', linewidth = 1.0, label = 'Lactose concentration')
-ax1.set_xlabel('Time, h')
-ax1.set_ylabel(r'$\text{Lactose concentration, g.L}^{-1}$')
+fig, ax1 = plt.subplots()
+ax1.stairs(lactose_concentration, sampling_time, baseline = None, color = 'red', linestyle = '--', linewidth = 1.0, label = r'$\text{Lactose concentration [S]}$')
+ax1.set_xlabel('Time (h)')
+ax1.set_ylabel(r'$\text{S (g.L}^{-1}\text{)}$')
 ax1.set_yticks(np.linspace(0, 160, 9))
 ax1.grid(linewidth = 0.25)
 ax1.legend(loc = 'upper left')
 
 ax2 = ax1.twinx()
-ax2.plot(sampling_time, cell_concentration, color = 'blue', marker = 'o', markersize = '4', linestyle = '--', linewidth = 1.0, label = 'Cell concentration')
-ax2.set_ylabel(r'$\text{Cell concentration, g.L}^{-1}$')
+ax2.plot(sampling_time, cell_concentration, color = 'blue', marker = 'o', markersize = '4', linestyle = '--', linewidth = 1.0, label = r'$\text{Cell concentration [X]}$')
+ax1.set_xlabel('Time (h)')
+ax2.set_ylabel(r'$\text{X (g.L}^{-1}\text{)}$')
 ax2.set_yticks(np.linspace(0, 80, 9))
 ax2.grid(linewidth = 0.25)
 ax2.legend(loc = 'upper right')
@@ -34,16 +35,17 @@ for x in range(len(mu)):
 
 # Plot cell concentrations and mu as a function of time
 fig, ax1 = plt.subplots()
-ax1.stairs(mu, sampling_time, baseline = None, color = 'red', linestyle = '--', linewidth = 1.0, label = r'Growth rate')
-ax1.set_ylabel(r'$\text{Growth rate, g.L}^{-1}\text{.s}^{-1}$')
+ax1.stairs(mu, sampling_time, baseline = None, color = 'red', linestyle = '--', linewidth = 1.0, label = r'$\text{Specific growth rate }\mu$')
+ax1.set_xlabel('Time (h)')
+ax1.set_ylabel(r'$\mu\text{ (h}^{-1}\text{)}$')
 ax1.set_yticks(np.linspace(0, 1, 11))
 ax1.grid(linewidth = 0.25)
 ax1.legend(loc = 'upper left')
 
 ax2 = ax1.twinx()
-ax2.plot(sampling_time, np.log(cell_concentration) + np.log(cell_concentration[0]), color = 'blue', marker = 'o', markersize = '4', linestyle = '--', linewidth = 1.0, label = 'Cell concentration')
-ax2.set_xlabel('Time, h')
-ax2.set_ylabel('Cell concentration, ln')
+ax2.plot(sampling_time, np.log(cell_concentration) + np.log(cell_concentration[0]), color = 'blue', marker = 'o', markersize = '4', linestyle = '--', linewidth = 1.0, label = 'Cell concentration [X]')
+ax2.set_xlabel('Time (h)')
+ax2.set_ylabel('ln(X)')
 ax2.set_yticks(np.linspace(5.4, 7.1, 11))
 ax2.set_ylim(5.4, 7.1)
 ax2.legend(loc = 'upper right')
@@ -83,8 +85,8 @@ plt.plot(1/lactose_concentration_growth_phase, 1/mu, color = 'black', marker = '
 plt.plot(x_graph, y_graph, color = 'black', marker = 'None', linestyle = '--', linewidth=1.0, label = r'$\text{model, R}^{2} = ' + r'\text{' + f'{round(det_coefficient, 3):.3f}' + r'}$')
 plt.annotate(r'$\frac{1}{\mu_{\mathrm{max}}}$', xy = (0, y_intercept), xycoords = 'data', xytext = (-50, 25), textcoords = 'offset points', arrowprops = dict(arrowstyle = '-|>', color = 'black'))
 plt.annotate(r'-$\frac{1}{K_{\mathrm{s}}}$', xy = (x_intercept, 0), xycoords = 'data', xytext = (-6, 50), textcoords = 'offset points', arrowprops = dict(arrowstyle = '-|>', color = 'black'))
-plt.xlabel('1/S')
-plt.ylabel('1/μ')
+plt.xlabel(r'$\text{1/S (L.g}^{-1}\text{)}$')
+plt.ylabel(r'$\text{1/}\mu\text{ (h)}$')
 plt.vlines(0, 0, np.max(y_graph)*1.05, color = 'black', linestyle = '-', linewidth = 1.0) # Multiply by 1.05 for better design
 plt.ylim([0, np.max(y_graph)*1.05]) # Multiply by 1.05 for better design
 plt.grid(which = 'both', linewidth = 0.25)
