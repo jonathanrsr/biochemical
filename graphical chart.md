@@ -8,26 +8,35 @@ This document outlines the standard graphical parameters to use for creating plo
   - Use a line width of `1.0`.
 
 - **Line Style**:
-  - Use solid lines (`linestyle = '-'`) for data line representing a model.
-  - Use dashed lines (`linestyle = '--'`) for data line representing samples.
+  - Use solid lines `linestyle = '-'` for data line representing a model.
+  - Use dashed lines `linestyle = '--'` for data line representing samples.
+  - Use dotted lines `linestyle = ':'` for data line highlighting important values.
 
 ## Scatter Plot Parameters 🔍
 
 - **Marker Size**:
-  - Use a marker size of `10.0`.
+  - Use marker size of `s = 10.0`.
 
 - **Marker Style**:
-  - Use circular markers (`o`).
+  - Use circular markers `marker = 'o'`.
+ 
+## Grids Parameters 📐
+
+- **Line Width**: 
+  - Use a line width of `0.25`.
+
+- **Line Style**:
+  - Use solid lines `linestyle = '-'`.
 
 ## Color Scheme 🎨
 
 - **1 Color**:
-  - Use `black` if no other same linestyle are used on the same plot.
+  - Use `color = 'black'` if no other same linestyle are used on the same plot.
 
 - **2 Colors**:
-  - Use `red` and `blue`.
+  - Use `color = 'red'` and `color = 'blue'`.
 
-## Graph Size and Layout 📐
+## Graph Size and Layout 📋
 
 - **Figure Size**:
   - Use `plt.rcParams['figure.figsize'] = [8, 3]` (width x height) at the beginning of your code.
