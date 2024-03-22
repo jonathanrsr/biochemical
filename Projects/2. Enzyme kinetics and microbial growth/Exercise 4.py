@@ -40,5 +40,6 @@ Ks = np.round(-1/x_intercept, 2) # g/L
 print(f'Question 1\nmumax = {mumax} 1/h\nKs = {Ks} g/L\n')
 
 plt.scatter(x, y, color = 'black', s = 10.0, label = 'data')
-plt.plot(x, model.predict(x))
+plt.plot(x, model.predict(x), color = 'black', linewidth = 1.0,
+         label = f'model, R^')
 plt.show()

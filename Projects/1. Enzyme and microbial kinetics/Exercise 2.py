@@ -95,7 +95,7 @@ plt.ylim([0, np.max(y_graph)*1.05]) # Multiply by 1.05 for better design
 plt.grid(which = 'both', linewidth = 0.25)
 plt.legend(loc = 'upper left')
 plt.title('Lineweaver-Burke type plot')
-plt.savefig('Projects\\1. Enzyme and microbial kinetics\\Images\\lineweaver_burke_type_plot.eps', format = 'eps')
+#plt.savefig('Projects\\1. Enzyme and microbial kinetics\\Images\\lineweaver_burke_type_plot.eps', format = 'eps')
 plt.show()
 
 # Find doubling-time, using eq. X = exp(mu*t)*X0 and X = 2*X0 ==> t = ln(2)/u
