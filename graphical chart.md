@@ -13,7 +13,7 @@ This document outlines the standard graphical parameters to use for creating plo
 ## Line Plot Parameters 📈
 
 - **Line Width**: 
-  - Use a line width `linewidth = '1.0'`.
+  - Use a line width `linewidth = '1.0'`. You can use `plt.rcParams['lines.linewidth'] = 3.0` at the beginning of your code.
 
 - **Line Style**:
   - Use solid lines `linestyle = '-'` for data line representing a model.
@@ -39,7 +39,7 @@ This document outlines the standard graphical parameters to use for creating plo
 ## Color Scheme 🎨
 
 - **1 Color**:
-  - Use `color = 'black'` if no other same linestyle are used on the same plot.
+  - Use `color = 'black'` if no other same linestyle are used on the same plot. You can use `plt.rcParams['axes.color_cycle']='r'` at the beginning of your code.
 
 - **2 Colors**:
   - Use `color = 'red'` and `color = 'blue'`.
