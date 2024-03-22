@@ -11,12 +11,12 @@ Younes, Anna, Pauline, Jonathan
 
 ## Projects 🚧
 
-### [Project 1: Enzyme and microbial kinetics]([Projects/1. Enzyme and microbial kinetics](https://github.com/jonathanrsr/biochemical/tree/999d2cb1603cd3557ab0f6503d121babf395c98b/Projects/1.%20Enzyme%20and%20microbial%20kinetics)
+### [Project 1: Enzyme and microbial kinetics](https://github.com/jonathanrsr/biochemical/tree/999d2cb1603cd3557ab0f6503d121babf395c98b/Projects/1.%20Enzyme%20and%20microbial%20kinetics)
    - **Description**: Introduction to data interpretation and enzyme kinetics, 3 exercises.
    - **Report**: https://www.overleaf.com/project/65eb0c6dddd6cb955b00455a
    - **Deadline**: Thursday 21.03.2024, 23 h 59.
 
-### [Project 2: Enzyme kinetics and microbial growth]([Projects/2. Enzyme kinetics and microbial growth](https://github.com/jonathanrsr/biochemical/tree/79830575a48389b561d4a5034a9525fdfd24ae18/Projects/2.%20Enzyme%20kinetics%20and%20microbial%20growth)
+### [Project 2: Enzyme kinetics and microbial growth](https://github.com/jonathanrsr/biochemical/tree/79830575a48389b561d4a5034a9525fdfd24ae18/Projects/2.%20Enzyme%20kinetics%20and%20microbial%20growth)
    - **Description**: Exercises on enzyme kinetics and microbial growth, 4 exercises.
    - **Report**: -
    - **Deadline**: Thursday 11.04.2024, 23 h 59.
