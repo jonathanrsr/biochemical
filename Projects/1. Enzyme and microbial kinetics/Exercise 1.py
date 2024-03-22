@@ -1,7 +1,6 @@
 import numpy as np
 from scipy.integrate import odeint
 from matplotlib import pyplot as plt
-from sklearn.linear_model import LinearRegression
 
 plt.rcParams['figure.figsize'] = [8, 3]
 plt.rcParams['figure.constrained_layout.use'] = True
@@ -42,7 +41,7 @@ E, S, ES, P = results.T
 # We plot the species evolution over time.
 plt.plot(t, results, linewidth = 1.0)
 plt.xlabel("Time (s)")
-plt.ylabel(r"$\text{Species' concentration (mol.L}^{-1}\text{)}$")
+plt.ylabel(r"Species' concentration ($\mathregular{mol.L^{-1}}$)")
 plt.legend("E,S,ES,P".split(","))
 
 plt.grid(linewidth = 0.25)
@@ -54,7 +53,7 @@ plt.ylim(bottom = 0, top = 1.1)
 plt.xticks(np.arange(0, 5.1, 0.5)) 
 plt.yticks(np.arange(0, 1.2, 0.1))
 
-plt.savefig('Projects\\1. Enzyme and microbial kinetics\\Images\\fig1.eps', format='eps')
+#plt.savefig('Projects\\1. Enzyme and microbial kinetics\\Images\\fig1.eps', format='eps')
 plt.show()
 
 # We define the system of differential equations, representing the rate of change of reactants and products in the
@@ -89,7 +88,7 @@ plt.plot(t, P_a, label='Product concentration (with approximation)', linewidth =
 plt.plot(t, P, label='Product concentration (no approximation)', linewidth = 1.0, color = 'red')
 
 plt.xlabel("Time (s)")
-plt.ylabel(r"$\text{Product concentration (mol.L}^{-1}\text{)}$")
+plt.ylabel(r"Product concentration ($\mathregular{mol.L^{-1}}$)")
 plt.title("Product concentration over time")
 plt.legend()
 
@@ -100,7 +99,7 @@ plt.xticks(np.arange(0, 5.1, 0.5))
 plt.yticks(np.arange(0, 1.2, 0.1))
 
 plt.grid(linewidth = 0.25)
-plt.savefig('Projects\\1. Enzyme and microbial kinetics\\Images\\fig2.eps', format='eps')
+#plt.savefig('Projects\\1. Enzyme and microbial kinetics\\Images\\fig2.eps', format='eps')
 plt.show()
 
 
@@ -127,31 +126,31 @@ v_0_E0_vary = kcat*E0_range*S0/(((kb + kcat)/kf) + S0)
 
 #Plots 
 fig, axs = plt.subplots(2, 2, figsize=(8, 6))
-axs[0,0].set_title(r'$\text{(a) }\text{Initial reaction rate vs k}_{f}$')
+axs[0,0].set_title(r'(a) Initial reaction rate vs $k_f$')
 axs[0,0].semilogx(kf_range, v_0_kf_vary, color = 'black', linewidth = 1.0)
-axs[0,0].set_xlabel(r'$\text{k}_{f}\text{ (L.mol}^{-1}\text{.s}^{-1}\text{)}$')
-axs[0,0].set_ylabel(r'$\nu_{init}\text{ (mol.L}^{-1}\text{.s}^{-1}\text{)}$')
+axs[0,0].set_xlabel(r'$k_f$ ($\mathregular{L.mol^{-1}.s^{-1}}$)')
+axs[0,0].set_ylabel(r'${\nu_{init}}$ ($\mathregular{mol.L^{-1}.s^{-1}}$)')
 axs[0,0].grid(True, which="both", linewidth = 0.25)
 
-axs[0,1].set_title(r'$\text{(b) }\text{Initial reaction rate vs k}_{b}$')
+axs[0,1].set_title(r'(b) Initial reaction rate vs $k_b$')
 axs[0,1].semilogx(kb_range, v_0_kb_vary, color = 'black', linewidth = 1.0)
-axs[0,1].set_xlabel(r'$\text{k}_{b}\text{ (s}^{-1}\text{)}$')
-axs[0,1].set_ylabel(r'$\nu_{init}\text{ (mol.L}^{-1}\text{.s}^{-1}\text{)}$')
+axs[0,1].set_xlabel(r'$k_b$ ($\mathregular{s^{-1}}$)')
+axs[0,1].set_ylabel(r'${\nu_{init}}$ ($\mathregular{mol.L^{-1}.s^{-1}}$)')
 axs[0,1].grid(True, which="both", linewidth = 0.25)
 
-axs[1,0].set_title(r'$\text{(c) }\text{Initial reaction rate vs k}_{cat}$')
+axs[1,0].set_title(r'(c) Initial reaction rate vs $k_{cat}$')
 axs[1,0].semilogx(kcat_range, v_0_kcat_vary, color = 'black', linewidth = 1.0)
-axs[1,0].set_xlabel(r'$\text{k}_{cat}\text{ (s}^{-1}\text{)}$')
-axs[1,0].set_ylabel(r'$\nu_{init}\text{ (mol.L}^{-1}\text{.s}^{-1}\text{)}$')
+axs[1,0].set_xlabel(r'$k_{cat}$ ($\mathregular{s^{-1}}$)')
+axs[1,0].set_ylabel(r'${\nu_{init}}$ ($\mathregular{mol.L^{-1}.s^{-1}}$)')
 axs[1,0].grid(True, which="both", linewidth = 0.25)
 
-axs[1,1].set_title('(c) Initial reaction rate vs initial enzyme concentration')
+axs[1,1].set_title('(d) Initial reaction rate vs initial enzyme concentration')
 axs[1,1].plot(E0_range, v_0_E0_vary, color = 'black', linewidth = 1.0)
-axs[1,1].set_xlabel(r'$\text{E}_{0}\text{ (mol.L}^{-1}\text{)}$')
-axs[1,1].set_ylabel(r'$\nu_{init}\text{ (mol.L}^{-1}\text{.s}^{-1}\text{)}$')
+axs[1,1].set_xlabel(r'$E_0$ ($\mathregular{mol.L^{-1}}$)')
+axs[1,1].set_ylabel(r'${\nu_{init}}$ ($\mathregular{mol.L^{-1}.s^{-1}}$)')
 axs[1,1].grid(True, which="both", linewidth = 0.25)
 
-plt.savefig('Projects\\1. Enzyme and microbial kinetics\\Images\\Initial_velocity.eps', format='eps')
+#plt.savefig('Projects\\1. Enzyme and microbial kinetics\\Images\\Initial_velocity.eps', format='eps')
 plt.show()
 
 
@@ -191,39 +190,39 @@ R_E0 = np.corrcoef(np.log(E0_range_slope), np.log(v0_E0_slope))[0, 1]
 
 ######### Plot #########
 fig, axs = plt.subplots(2, 2, figsize=(8, 6))
-axs[0,0].set_title(r'$\text{Initial reaction rate (ln) vs k}_{f}\text{ (ln)}$')
+axs[0,0].set_title(r'Initial reaction rate (ln) vs $k_f$ (ln)')
 axs[0,0].scatter(np.log(kf_range_slope), np.log(v0_kf_slope), color = 'black', s = 10.0, label = "data")
-axs[0,0].plot(x1_kf, y1_kf, color = 'black', linestyle = '--', linewidth = 1.0, label = r'$\text{model, R}^{2} = ' + r'\text{' + f'{round(R_kf**2, 3):.3f}' + r'}$')
-axs[0,0].set_xlabel(r'$\text{ln(k}_{f}\text{)}$')
-axs[0,0].set_ylabel(r'$\text{ln(}\nu_{init}\text{)}$')
+axs[0,0].plot(x1_kf, y1_kf, color = 'black', linestyle = '--', linewidth = 1.0, label = r'model, $\mathregular{R^{2}}$ = ' + f'{round(R_kf**2, 3):.3f}')
+axs[0,0].set_xlabel(r'ln($k_f$)')
+axs[0,0].set_ylabel(r'ln(${\nu_{init}}$)')
 axs[0,0].legend()
 axs[0,0].grid(True, which="both", linewidth = 0.25)
 
-axs[0,1].set_title(r'$\text{Initial reaction rate (ln) vs k}_{b}\text{ (ln)}$')
+axs[0,1].set_title(r'Initial reaction rate (ln) vs $k_b$ (ln)')
 axs[0,1].scatter(np.log(kb_range_slope), np.log(v0_kb_slope), color = 'black', s = 10.0, label = "data")
-axs[0,1].plot(x1_kb, y1_kb, color = 'black', linestyle = '--', linewidth = 1.0, label = r'$\text{model, R}^{2} = ' + r'\text{' + f'{round(R_kb**2, 3):.3f}' + r'}$')
-axs[0,1].set_xlabel(r'$\text{ln(k}_{b}\text{)}$')
-axs[0,1].set_ylabel(r'$\text{ln(}\nu_{init}\text{)}$')
+axs[0,1].plot(x1_kb, y1_kb, color = 'black', linestyle = '--', linewidth = 1.0, label = r'model, $\mathregular{R^2}$ = ' + f'{round(R_kb**2, 3):.3f}')
+axs[0,1].set_xlabel(r'ln($k_b$)')
+axs[0,1].set_ylabel(r'ln(${\nu_{init}}$)')
 axs[0,1].legend()
 axs[0,1].grid(True, which="both", linewidth = 0.25)
 
-axs[1,0].set_title(r'$\text{Initial reaction rate (ln) vs k}_{cat}\text{ (ln)}$')
+axs[1,0].set_title(r'Initial reaction rate (ln) vs ${k_{cat}}$ (ln)')
 axs[1,0].scatter(np.log(kcat_range_slope), np.log(v0_kcat_slope), color = 'black', s = 10.0, label = "data")
-axs[1,0].plot(x1_kcat, y1_kcat, color = 'black', linestyle = '--', linewidth = 1.0, label = r'$\text{model, R}^{2} = ' + r'\text{' + f'{round(R_kcat**2, 3):.3f}' + r'}$')
-axs[1,0].set_xlabel(r'$\text{ln(k}_{cat}\text{)}$')
-axs[1,0].set_ylabel(r'$\text{ln(}\nu_{init}\text{)}$')
+axs[1,0].plot(x1_kcat, y1_kcat, color = 'black', linestyle = '--', linewidth = 1.0, label = r'model, $\mathregular{R^2}$ = ' + f'{round(R_kcat**2, 3):.3f}')
+axs[1,0].set_xlabel(r'ln(${k_{cat}}$)')
+axs[1,0].set_ylabel(r'ln(${\nu_{init}}$)')
 axs[1,0].legend()
 axs[1,0].grid(True, which="both", linewidth = 0.25)
 
-axs[1,1].set_title(r'$\text{Initial reaction rate (ln) vs initial enzyme concentration (ln)}$')
+axs[1,1].set_title(r'Initial reaction rate (ln) vs initial enzyme concentration (ln)')
 axs[1,1].scatter(np.log(E0_range_slope), np.log(v0_E0_slope), color = 'black', s = 10.0, label = "data")
-axs[1,1].plot(x1_E0, y1_E0, color = 'black', linestyle = '--', linewidth = 1.0, label = r'$\text{model, R}^{2} = ' + r'\text{' + f'{round(R_E0**2, 3):.3f}' + r'}$')
-axs[1,1].set_xlabel(r'$\text{ln(E}_{0}\text{)}$')
-axs[1,1].set_ylabel(r'$\text{ln(}\nu_{init}\text{)}$')
+axs[1,1].plot(x1_E0, y1_E0, color = 'black', linestyle = '--', linewidth = 1.0, label = r'model, $\mathregular{R^2}$ = ' + f'{round(R_E0**2, 3):.3f}')
+axs[1,1].set_xlabel(r'ln($E_0$)')
+axs[1,1].set_ylabel(r'ln(${\nu_{init}}$)')
 axs[1,1].legend()
 axs[1,1].grid(True, which="both", linewidth = 0.25)
 
-plt.savefig('Projects\\1. Enzyme and microbial kinetics\\Images\\logloginitialvelocity.eps', format='eps')
+#plt.savefig('Projects\\1. Enzyme and microbial kinetics\\Images\\logloginitialvelocity.eps', format='eps')
 plt.show()
 
 #Exercise 1, Q) h
@@ -271,10 +270,10 @@ CE, CS, CES, CP, CP_1 = results.T/V
 plt.plot(t, CE, t, CS, t, CES, t, CP, t, CP_1, linewidth = 1.0)
 plt.title('Non Specific Enzymatic Reaction')
 plt.xlabel('time (s)')
-plt.ylabel(r'$\text{C}_{i}\text{ (mol.L}^{-1}\text{)}$')
+plt.ylabel(r'$C_i$ ($\mathregular{mol.L^{-1}}$)')
 plt.legend(['E', 'S', 'ES', 'P', 'P'], ncol = 5)
 plt.grid(linewidth = 0.25)
-plt.savefig('Projects\\1. Enzyme and microbial kinetics\\Images\\non_enzymatic_reaction.eps', format='eps')
+#plt.savefig('Projects\\1. Enzyme and microbial kinetics\\Images\\non_enzymatic_reaction.eps', format='eps')
 plt.show()
 
 print(CP_1[-1]) #Undesired product concentration at steady state
@@ -298,12 +297,12 @@ CE, CS, CES, CP, CP_1 = results.T/V
 plt.plot(t, CE, t, CS, t, CES, t, CP, t, CP_1, linewidth = 1.0)
 plt.title("Non Specific Enzymatic Reaction")
 plt.xlabel("time (s)")
-plt.ylabel(r'$\text{C}_{i}\text{ (mol.L}^{-1}\text{)}$')
+plt.ylabel(r'$C_i$ ($\mathregular{mol.L^{-1}}$)')
 plt.xlim([0, 0.1])
 plt.legend(["E", "S", "ES", "P", "P'"])
 
 plt.grid(linewidth = 0.25)
-plt.savefig('Projects\\1. Enzyme and microbial kinetics\\Images\\non1_enzymatic_reaction.eps', format='eps')
+#plt.savefig('Projects\\1. Enzyme and microbial kinetics\\Images\\non1_enzymatic_reaction.eps', format='eps')
 plt.show()
 
 print(CP_1[-1]) #Undesired product concentration at steady state

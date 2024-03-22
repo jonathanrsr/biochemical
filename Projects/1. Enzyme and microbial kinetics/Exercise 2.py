@@ -12,23 +12,23 @@ lactose_concentration = np.array([137.0, 114.0, 90.0, 43.0, 29.0, 9.0, 2.0]) # g
 
 # Plot cell and lactose concentration as a function of time
 fig, ax1 = plt.subplots()
-ax1.stairs(lactose_concentration, sampling_time, baseline = None, color = 'red', linestyle = '--', linewidth = 1.0, label = r'$\text{Lactose concentration [S]}$')
+ax1.stairs(lactose_concentration, sampling_time, baseline = None, color = 'red', linestyle = '--', linewidth = 1.0, label = 'Lactose concentration [S]')
 ax1.set_xlabel('Time (h)')
-ax1.set_ylabel(r'$\text{S (g.L}^{-1}\text{)}$')
+ax1.set_ylabel(r'S ($\mathregular{g.L^{-1}}$)')
 ax1.set_yticks(np.linspace(0, 160, 9))
 ax1.grid(linewidth = 0.25)
 ax1.legend(loc = 'upper left')
 
 ax2 = ax1.twinx()
-ax2.plot(sampling_time, cell_concentration, color = 'blue', marker = 'o', markersize = '4', linestyle = '--', linewidth = 1.0, label = r'$\text{Cell concentration [X]}$')
+ax2.plot(sampling_time, cell_concentration, color = 'blue', marker = 'o', markersize = '4', linestyle = '--', linewidth = 1.0, label = 'Cell concentration [X]')
 ax1.set_xlabel('Time (h)')
-ax2.set_ylabel(r'$\text{X (g.L}^{-1}\text{)}$')
+ax2.set_ylabel(r'X ($\mathregular{g.L^{-1}}$)')
 ax2.set_yticks(np.linspace(0, 80, 9))
 ax2.grid(linewidth = 0.25)
 ax2.legend(loc = 'upper right')
 
 plt.title('Cell and lactose concentrations versus time')
-plt.savefig('Projects\\1. Enzyme and microbial kinetics\\Images\\cell_and_lactose_concentration_versus_time.eps', format = 'eps')
+#plt.savefig('Projects\\1. Enzyme and microbial kinetics\\Images\\cell_and_lactose_concentration_versus_time.eps', format = 'eps')
 plt.show()
 
 # Calculate growth rate mu = 1/Xmin*(dX/dt) using Euler's formula for the derivative
@@ -38,9 +38,9 @@ for x in range(len(mu)):
 
 # Plot cell concentrations and mu as a function of time
 fig, ax1 = plt.subplots()
-ax1.stairs(mu, sampling_time, baseline = None, color = 'red', linestyle = '--', linewidth = 1.0, label = r'$\text{Specific growth rate }\mu$')
+ax1.stairs(mu, sampling_time, baseline = None, color = 'red', linestyle = '--', linewidth = 1.0, label = r'Specific growth rate $\mu$')
 ax1.set_xlabel('Time (h)')
-ax1.set_ylabel(r'$\mu\text{ (h}^{-1}\text{)}$')
+ax1.set_ylabel(r'$\mu$ ($\mathregular{h^{-1}}$)')
 ax1.set_yticks(np.linspace(0, 1, 11))
 ax1.grid(linewidth = 0.25)
 ax1.legend(loc = 'upper left')
@@ -54,7 +54,7 @@ ax2.set_ylim(5.4, 7.1)
 ax2.legend(loc = 'upper right')
 
 plt.title('Cell concentration and growth rate versus time')
-plt.savefig('Projects\\1. Enzyme and microbial kinetics\\Images\\cell_concentration_and_growth_rate_versus_time.eps', format = 'eps')
+#plt.savefig('Projects\\1. Enzyme and microbial kinetics\\Images\\cell_concentration_and_growth_rate_versus_time.eps', format = 'eps')
 plt.show()
 
 # Slicing data to only take the growth phase part
@@ -85,11 +85,11 @@ y_graph = model.predict(x_graph.reshape((-1, 1)))
 
 # Lineweaver-Burke type plot
 plt.plot(1/lactose_concentration_growth_phase, 1/mu, color = 'black', marker = 'o', markersize = '4', linestyle = 'None', label = 'data')
-plt.plot(x_graph, y_graph, color = 'black', marker = 'None', linestyle = '--', linewidth=1.0, label = r'$\text{model, R}^{2} = ' + r'\text{' + f'{round(det_coefficient, 3):.3f}' + r'}$')
-plt.annotate(r'$\frac{1}{\mu_{\mathrm{max}}}$', xy = (0, y_intercept), xycoords = 'data', xytext = (-50, 25), textcoords = 'offset points', arrowprops = dict(arrowstyle = '-|>', color = 'black'))
-plt.annotate(r'-$\frac{1}{K_{\mathrm{s}}}$', xy = (x_intercept, 0), xycoords = 'data', xytext = (-6, 50), textcoords = 'offset points', arrowprops = dict(arrowstyle = '-|>', color = 'black'))
-plt.xlabel(r'$\text{1/S (L.g}^{-1}\text{)}$')
-plt.ylabel(r'$\text{1/}\mu\text{ (h)}$')
+plt.plot(x_graph, y_graph, color = 'black', marker = 'None', linestyle = '--', linewidth=1.0, label = r'model, $R^2$ = ' + f'{round(det_coefficient, 3):.3f}')
+plt.annotate(r'$\frac{1}{\mu_{{max}}}$', xy = (0, y_intercept), xycoords = 'data', xytext = (-50, 25), textcoords = 'offset points', arrowprops = dict(arrowstyle = '-|>', color = 'black'))
+plt.annotate(r'-$\frac{1}{K_{s}}$', xy = (x_intercept, 0), xycoords = 'data', xytext = (-6, 50), textcoords = 'offset points', arrowprops = dict(arrowstyle = '-|>', color = 'black'))
+plt.xlabel(r'1/S ($\mathregular{L.g^{-1}}$)')
+plt.ylabel(r'1/$\mu$ (h)')
 plt.vlines(0, 0, np.max(y_graph)*1.05, color = 'black', linestyle = '-', linewidth = 1.0) # Multiply by 1.05 for better design
 plt.ylim([0, np.max(y_graph)*1.05]) # Multiply by 1.05 for better design
 plt.grid(which = 'both', linewidth = 0.25)
