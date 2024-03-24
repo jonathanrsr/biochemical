@@ -50,7 +50,7 @@ y_graph = model2.predict(x_graph.reshape((-1, 1)))
 
 # Lineweaver-Burke type plot
 plt.plot(1/S_average, 1/rs, color = 'black', marker = 'o', markersize = '4', linestyle = 'None', label = 'data')
-plt.plot(x_graph, y_graph, color = 'black', marker = 'None', linestyle = '--', linewidth=1.0, label = r'model, $R^2$ = ' + f'{round(det_coefficient, 3):.3f}')
+plt.plot(x_graph, y_graph, color = 'black', marker = 'None', linestyle = '--', linewidth=1.0, label = r'model, $\mathregular{R^2}$ = ' + f'{round(det_coefficient, 3):.3f}')
 plt.annotate(r'$\frac{1}{\nu_{{max}}}$', xy = (0, y_intercept), xycoords = 'data', xytext = (50, 0), textcoords = 'offset points', arrowprops = dict(arrowstyle = '-|>', color = 'black'))
 plt.annotate(r'-$\frac{1}{K_{{M}}}$', xy = (x_intercept, 0), xycoords = 'data', xytext = (-6, 50), textcoords = 'offset points', arrowprops = dict(arrowstyle = '-|>', color = 'black'))
 plt.xlabel(r'1/S ($\mathregular{L.mmol^{-1}}$)')
@@ -74,12 +74,11 @@ plt.plot(S_model, rs_model, label = "model", color = 'black', linestyle = '--', 
 plt.axhline(y = nu_max, color = 'black', linestyle = ':', linewidth = 1.0)
 plt.plot([0, Km], [nu_max/2, nu_max/2], linestyle = ':', linewidth = 1.0, color = 'black')
 plt.plot([Km, Km], [0, nu_max/2], linestyle = ':', linewidth = 1.0, color = 'black')
-plt.annotate(r'$K_M$', xy = (Km, 0), xytext = (Km*1.2, 0.02),
-             arrowprops = dict(arrowstyle = '-|>', color = 'black'))
+plt.annotate(r'$K_M$', xy = (Km, 0), xytext = (Km*1.2, 0.02), arrowprops = dict(arrowstyle = '-|>', color = 'black'))
 plt.annotate(r'$\nu_{max}$', xy = (0, nu_max), xytext = (S_model[-1]/5, nu_max*0.95))
 plt.annotate(r'$\frac{\nu_{max}}{2}$', xy = (0, nu_max/2), xytext = (Km/5, nu_max/2*1.05))
 plt.xlabel(r'S ($\mathregular{mmol.L^{-1}}$)')
-plt.ylabel(r'1/$r_s$ ($\mathregular{mmol.L^{-1}.s^{-1}}$)')
+plt.ylabel(r'$r_s$ ($\mathregular{mmol.L^{-1}.s^{-1}}$)')
 plt.xlim(0, S_model[-1])
 plt.ylim(0, nu_max*1.1)
 plt.grid(linewidth = 0.25)
