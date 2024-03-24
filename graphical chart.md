@@ -39,7 +39,7 @@ This document outlines the standard graphical parameters to use for creating plo
 ## Color Scheme 🎨
 
 - **1 Color**:
-  - Use `color = 'black'` if no other same linestyle are used on the same plot. You can use `plt.rcParams['axes.color_cycle']='black'` at the beginning of your code.
+  - Use `color = 'black'` if no other same linestyle are used on the same plot. You can use `plt.rcParams['axes.color_cycle'] = 'black'` at the beginning of your code.
 
 - **2 Colors**:
   - Use `color = 'red'` and `color = 'blue'`.
