@@ -19,7 +19,7 @@ Younes, Anna, Pauline, Jonathan
 ### [Project 2: Enzyme kinetics and microbial growth](https://github.com/jonathanrsr/biochemical/tree/79830575a48389b561d4a5034a9525fdfd24ae18/Projects/2.%20Enzyme%20kinetics%20and%20microbial%20growth)
    - **Description**: Exercises on enzyme kinetics and microbial growth, 4 exercises.
    - **Report**: https://www.overleaf.com/project/65fd95b103cdf54aaea1911b
-   - **Deadline**: Thursday 11.04.2024, 23 h 59.
+   - **Deadline**: Thursday 18.04.2024, 23 h 59.
 
    *More projects will be added as we progress through the course.*
 
