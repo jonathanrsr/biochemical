@@ -24,7 +24,7 @@ Younes, Anna, Pauline, Jonathan
 ### [Project 3: Design of fed-batch reactor](https://github.com/jonathanrsr/biochemical/tree/main/Projects/3.%20Design%20of%20fed-batch%20bioreactors)
    - **Description**: Exercises on working with fed-batch reactors, 3 exercises.
    - **Report**: 
-   - **Deadline**: Thursday 02.05.2024, 23 h 59.
+   - **Deadline**: Thursday 09.05.2024, 23 h 59.
 
    *More projects will be added as we progress through the course.*
 
