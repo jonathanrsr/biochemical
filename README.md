@@ -21,6 +21,11 @@ Younes, Anna, Pauline, Jonathan
    - **Report**: https://www.overleaf.com/project/65fd95b103cdf54aaea1911b
    - **Deadline**: Thursday 18.04.2024, 23 h 59.
 
+### [Project 3: Design of fed-batch reactor]()
+   - **Description**: Exercises on working with fed-batch reactors, 3 exercises.
+   - **Report**: 
+   - **Deadline**: Thursday 02.05.2024, 23 h 59.
+
    *More projects will be added as we progress through the course.*
 
 ## Graphical Chart 📊
