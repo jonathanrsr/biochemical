@@ -26,6 +26,11 @@ Younes, Anna, Pauline, Jonathan
    - **Report**: https://www.overleaf.com/project/662b8f4b9d8b4f895af05ca8
    - **Deadline**: Thursday 09.05.2024, 23 h 59.
 
+### [Project 3: Fed-batch reactor](https://github.com/jonathanrsr/biochemical/tree/main/Projects/4.%20Fed-batch%20reactor)
+   - **Description**: Exercises on working with a fed-batch reactor, 2 exercises.
+   - **Report**: -
+   - **Deadline**: Thursday 24.05.2024, 23 h 59.
+
    *More projects will be added as we progress through the course.*
 
 ## Graphical Chart 📊
